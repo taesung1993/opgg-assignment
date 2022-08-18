@@ -4,19 +4,37 @@ on:
   pull_request:
     branches: [main]
 
+# jobs:
+#   build:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [ 16.x ]
+#     steps:
+#       -uses: actions/checkout@v2
+#       -name: Use Node.js ${{matrix.node-version}}
+#         uses: actions/setup-node@v1
+#         with:
+#          node-version: ${{matrix.node-version}}
+#       -run: npm i
+#       -run: npx lint-staged
+#       -run: npm run test:no-watch
+
 jobs:
   build:
-    name: Build
+    name: 머지 전에 린터 및 테스트를 체킹합니다.
     runs-on: ubuntu-latest
-    strategy: 
+    strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [18.x]
     steps:
-      -uses: actions/checkout@v2
-      -name: Use Node.js ${{matrix.node-version}}
-       uses: actions/setup-node@v1
-       with:
-        node-version: ${{matrix.node-version}}
-      -run: npm i
-      -run: npx lint-staged
-      -run: npm run test:no-watch
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node_version}}
+      - run: npm i
+      - run: npm run build --if-present
+      - run: npm run lint
+      - run: npm run test:no-watch
