@@ -1,35 +1,40 @@
 import Atoms from '../atoms';
-import { ISearchNavItem } from '../../models/interfaces/SearchNavItem';
-import { useState } from 'react';
-
-const navItems: ISearchNavItem[] = [
-  {
-    id: 'navItem-1',
-    title: '최근검색',
-    type: 'latest'
-  },
-  {
-    id: 'navItem-2',
-    title: '즐겨찾기',
-    type: 'popular'
-  }
-];
+import React, { useMemo, useState, useEffect, useCallback } from 'react';
 
 export default function Search() {
-  const [selectedItem, setSelectedItem] = useState<ISearchNavItem>(navItems[0]);
+  const [showSearchContainer, setShowSearchContainer] =
+    useState<boolean>(false);
+
+  const SearchBox = useMemo(() => {
+    return showSearchContainer ? Atoms.SearchBox : React.Fragment;
+  }, [showSearchContainer]);
+
+  const onClick = useCallback(
+    (event: MouseEvent) => {
+      if (showSearchContainer) {
+        const target = event.target as HTMLElement;
+        const isShowingSearchContainer = target.closest('.search-container');
+
+        if (!isShowingSearchContainer) {
+          setShowSearchContainer(false);
+        }
+      }
+    },
+    [showSearchContainer]
+  );
+
+  useEffect(() => {
+    window.addEventListener('click', onClick);
+    return () => {
+      window.removeEventListener('click', onClick);
+    };
+  });
 
   return (
-    <div className='w-[16.25rem] h-8 flex items-center bg-white py-2 px-[0.875rem] relative'>
-      <Atoms.SearchInput />
+    <div className='search-container w-[16.25rem] h-8 flex items-center bg-white py-2 px-[0.875rem] relative'>
+      <Atoms.SearchInput setShowSearchContainer={setShowSearchContainer} />
       <Atoms.SearchButton />
-      <section className='absolute left-0 top-full w-full border shadow-[0px_2px_4px_0px_rgb(0,0,0,0.5)]'>
-        <Atoms.SearchNav
-          navItems={navItems}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
-        />
-        <Atoms.SearchContent type={selectedItem.type} />
-      </section>
+      <SearchBox />
     </div>
   );
 }
