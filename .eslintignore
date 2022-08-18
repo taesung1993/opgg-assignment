@@ -1,0 +1,3 @@
+# tailwind 설정 파일은 eslint 설정을 무시한다.
+tailwind.config.js
+postcss.config.js
