@@ -19,16 +19,14 @@ export default function SearchNav({
   };
 
   return (
-    <nav className='h-10'>
+    <nav className='h-10' role='search-nav'>
       <ul className='flex items-center w-full h-full'>
         {navItems.map((navItem) => (
-          <li
-            className='flex-1 w-full h-full'
-            key={navItem.id}
-            onClick={() => setSelectedItem(navItem)}>
+          <li className='flex-1 w-full h-full' key={navItem.id}>
             <button
               className='w-full h-full flex justify-center items-center bg-greyish-three text-greyish-four text-sm'
-              style={selectedId === navItem.id ? activeStyle : {}}>
+              style={selectedId === navItem.id ? activeStyle : {}}
+              onClick={() => setSelectedItem(navItem)}>
               {navItem.title}
             </button>
           </li>
