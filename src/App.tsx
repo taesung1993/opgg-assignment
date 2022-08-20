@@ -1,5 +1,19 @@
+import { Suspense } from 'react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import Pages from './components/pages';
+const queryClient = new QueryClient();
+
 function App() {
-  return <h1 className='text-3xl font-bold underline'>Hello world!</h1>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Suspense>
+        <RecoilRoot>
+          <Pages.Home />
+        </RecoilRoot>
+      </Suspense>
+    </QueryClientProvider>
+  );
 }
 
 export default App;

@@ -1,6 +1,13 @@
+# ignore
+jest.config.js
+
+# ignore config-overrides.js
+config-overrides.js
+
 # tailwind 설정 파일은 eslint 설정을 무시한다.
 tailwind.config.js
 postcss.config.js
 
-# prevent build directories
+# ignore build directories
 build
+
