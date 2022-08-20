@@ -7,6 +7,17 @@ export const getSummonerInLocal = (type: 'latest' | 'liked'): ISummoner[] => {
   return summoners ? JSON.parse(summoners) : [];
 };
 
+export const isThatSummonerLiking = (summoner: ISummoner): boolean => {
+  const summoners = localStorage.getItem('likedSummoners');
+  const list: ISummoner[] = summoners ? JSON.parse(summoners) : [];
+
+  if (list.length) {
+    return !!list.find((s) => s.name === summoner.name);
+  }
+
+  return false;
+};
+
 export const recordSummonerInLocal = (
   summoner: ISummoner,
   type: 'latest' | 'liked'
