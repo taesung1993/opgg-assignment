@@ -19,7 +19,8 @@ module.exports = {
         greyish: '#b6b6b6',
         'greyish-two': '#a7a7a7',
         'greyish-three': '#e3e3e3',
-        'greyish-four': '#9c9c9c'
+        'greyish-four': '#9c9c9c',
+        border: '#d0d3d4'
       }
     },
     fontFamily: {
