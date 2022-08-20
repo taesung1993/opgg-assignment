@@ -1,10 +1,18 @@
-import Templates from './components/templates';
+import { Suspense } from 'react';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { RecoilRoot } from 'recoil';
+import Pages from './components/pages';
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Templates.Nested>
-      <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-    </Templates.Nested>
+    <QueryClientProvider client={queryClient}>
+      <Suspense>
+        <RecoilRoot>
+          <Pages.Home />
+        </RecoilRoot>
+      </Suspense>
+    </QueryClientProvider>
   );
 }
 
