@@ -57,19 +57,27 @@ function LatestList() {
     return (
       <ul className='w-full'>
         {latestList.map((s) => (
-          <li key={s.name} className='flex items-center'>
+          <li
+            key={s.name}
+            className='flex items-center'
+            role='record-latest-summoner'>
             <div className='text-xs text-white font-bold bg-opgg py-[0.125rem] px-1 rounded-sm mr-4'>
               KR
             </div>
             <div className='flex-1'>{s.name}</div>
             <div className='flex items-center'>
-              <button onClick={(event) => onLiked(event, s)}>
+              <button
+                onClick={(event) => onLiked(event, s)}
+                role='search-like-button'>
                 <AiFillStar
                   className='inline mb-0.5'
                   color={isThatSummonerLiking(s) ? likeColor : unLikeColor}
                 />
               </button>
-              <button className='ml-2' onClick={(event) => onRemove(event, s)}>
+              <button
+                className='ml-2'
+                onClick={(event) => onRemove(event, s)}
+                role='remove-like-button'>
                 <RiCloseFill className='inline mb-0.5 fill-gray-300' />
               </button>
             </div>
@@ -108,13 +116,19 @@ function LikedList() {
     return (
       <ul className='w-full'>
         {likedList.map((s) => (
-          <li key={s.name} className='flex items-center'>
+          <li
+            key={s.name}
+            className='flex items-center'
+            role='record-liked-summoner'>
             <div className='text-xs text-white font-bold bg-opgg py-[0.125rem] px-1 rounded-sm mr-4'>
               KR
             </div>
             <div className='flex-1'>{s.name}</div>
             <div className='flex items-center'>
-              <button className='ml-2' onClick={(event) => onRemove(event, s)}>
+              <button
+                className='ml-2'
+                onClick={(event) => onRemove(event, s)}
+                role='remove-liked-button'>
                 <RiCloseFill className='inline mb-0.5 fill-gray-300' />
               </button>
             </div>
