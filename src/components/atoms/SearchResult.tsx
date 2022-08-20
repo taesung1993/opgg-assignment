@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useRecoilValue } from 'recoil';
-import { recordSummonerInLocal } from '../../controllers/recordSummoner';
+import { recordSummonerInLocal } from '../../controllers/localSummonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
 import States from '../../states';
 
