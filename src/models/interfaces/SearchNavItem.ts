@@ -1,5 +1,5 @@
 export interface ISearchNavItem {
   id: string;
   title: string;
-  type: 'latest' | 'like';
+  type: 'latest' | 'liked';
 }

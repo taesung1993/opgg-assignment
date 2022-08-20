@@ -14,7 +14,7 @@ const navItems: ISearchNavItem[] = [
   {
     id: 'navItem-2',
     title: '즐겨찾기',
-    type: 'like'
+    type: 'liked'
   }
 ];
 

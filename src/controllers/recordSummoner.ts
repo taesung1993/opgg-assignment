@@ -1,5 +1,12 @@
 import { ISummoner } from '../models/interfaces/Summoner';
 
+export const getSummonerInLocal = (type: 'latest' | 'liked'): ISummoner[] => {
+  const key = type === 'latest' ? 'latestSummoners' : 'likedSummoners';
+  const summoners = localStorage.getItem(key);
+
+  return summoners ? JSON.parse(summoners) : [];
+};
+
 export const recordSummonerInLocal = (
   summoner: ISummoner,
   type: 'latest' | 'liked'

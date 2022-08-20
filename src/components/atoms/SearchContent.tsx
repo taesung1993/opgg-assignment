@@ -1,11 +1,13 @@
 import { AiOutlineInfoCircle, AiFillStar } from 'react-icons/ai';
+import { getSummonerInLocal } from '../../controllers/recordSummoner';
 
 interface Props {
-  type?: 'latest' | 'like';
+  type?: 'latest' | 'liked';
 }
 
 export default function SeachContent({ type }: Props) {
   if (type === 'latest') {
+    const data = getSummonerInLocal(type);
     return (
       <section className='flex flex-col justify-center items-center p-5'>
         <EmptyLatest />
