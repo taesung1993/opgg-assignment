@@ -21,7 +21,7 @@ const navItems: ISearchNavItem[] = [
 export default function SearchBox() {
   const [selectedItem, setSelectedItem] = useState<ISearchNavItem>(navItems[0]);
   const keyword = useRecoilValue(States.SearchKeyword);
-  const { state, contents } = useRecoilValueLoadable(States.SearchedSummoner);
+  const { contents } = useRecoilValueLoadable(States.SearchedSummoner);
 
   const Content = keyword ? (
     <Atoms.SearchResult summoners={[contents]} />
