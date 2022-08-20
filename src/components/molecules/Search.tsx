@@ -1,3 +1,4 @@
+import Molecules from './index';
 import Atoms from '../atoms';
 import React, { useMemo, useState, useEffect, useCallback } from 'react';
 
@@ -6,7 +7,7 @@ export default function Search() {
     useState<boolean>(false);
 
   const SearchBox = useMemo(() => {
-    return showSearchContainer ? Atoms.SearchBox : React.Fragment;
+    return showSearchContainer ? Molecules.SearchBox : React.Fragment;
   }, [showSearchContainer]);
 
   const onClick = useCallback(
