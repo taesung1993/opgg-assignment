@@ -21,6 +21,7 @@ export default function SearchResult({ summoners }: Props) {
         <li
           key={`s-${index}`}
           className='py-1.5 px-4 h-[3.3125rem] overflow-hidden hover:bg-blue-50 cursor-pointer'
+          role='search-summoner-result'
           onClick={() => onClick(s)}>
           <section className='flex items-center'>
             <div className='icon min-w-[2.25rem] mr-3.5'>
@@ -35,7 +36,9 @@ export default function SearchResult({ summoners }: Props) {
               )}
             </div>
             <div className='info overflow-hidden'>
-              <div className='text-sm text-[#44515c]'>
+              <div
+                className='text-sm text-[#44515c]'
+                role='search-summoner-name'>
                 {s.name && s.name.split(keyword)[0]}
                 <span className='text-blue-500'>{keyword}</span>
                 {s.name && s.name.split(keyword)[1]}
