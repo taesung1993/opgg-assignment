@@ -1,14 +1,21 @@
 import { AiOutlineInfoCircle, AiFillStar } from 'react-icons/ai';
 
 interface Props {
-  type?: 'latest' | 'popular';
+  type?: 'latest' | 'like';
 }
 
 export default function SeachContent({ type }: Props) {
-  const Content = type === 'latest' ? EmptyLatest : EmptyPopular;
+  if (type === 'latest') {
+    return (
+      <section className='flex flex-col justify-center items-center p-5'>
+        <EmptyLatest />
+      </section>
+    );
+  }
+
   return (
     <section className='flex flex-col justify-center items-center p-5'>
-      <Content />
+      <EmptyPopular />
     </section>
   );
 }
