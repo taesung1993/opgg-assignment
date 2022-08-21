@@ -51,25 +51,23 @@ export default function TabMenus<T extends { id: string; title: string }>({
       }}>
       <ul className='flex items-center w-full h-full'>
         {tabItems.map((tabItem, index) => (
-          <>
+          <li className='relative flex-1 w-full h-full' key={tabItem.id}>
             {isDividerOption && index ? (
               <div
-                className='w-[1px] h-full'
+                className='absolute top-0 left-0 w-[1px] h-full'
                 style={{
                   backgroundColor: style?.tabs?.divider || 'transparent'
                 }}></div>
             ) : (
               <></>
             )}
-            <li className='flex-1 w-full h-full' key={tabItem.id}>
-              <button
-                className='w-full h-full flex justify-center items-center'
-                style={selectedId === tabItem.id ? buttonActive : buttonDefault}
-                onClick={() => setSelectedItem(tabItem)}>
-                {tabItem.title}
-              </button>
-            </li>
-          </>
+            <button
+              className='w-full h-full flex justify-center items-center'
+              style={selectedId === tabItem.id ? buttonActive : buttonDefault}
+              onClick={() => setSelectedItem(tabItem)}>
+              {tabItem.title}
+            </button>
+          </li>
         ))}
       </ul>
     </nav>
