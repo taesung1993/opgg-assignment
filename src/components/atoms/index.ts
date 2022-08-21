@@ -3,11 +3,19 @@ import SearchButton from './SearchButton';
 import SearchNav from './SearchNav';
 import SearchContent from './SearchContent';
 import SearchResult from './SearchResult';
+import PreviousTiers from './PreviousTiers';
+import Thumbnail from './Thumbnail';
+import LevelBadge from './LevelBadge';
+import ProfileShortInfo from './ProfileShortInfo';
 
 export default {
   SearchInput,
   SearchButton,
   SearchNav,
   SearchContent,
-  SearchResult
+  SearchResult,
+  PreviousTiers,
+  Thumbnail,
+  LevelBadge,
+  ProfileShortInfo
 };
