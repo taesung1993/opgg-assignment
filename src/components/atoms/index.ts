@@ -8,6 +8,8 @@ import Thumbnail from './Thumbnail';
 import LevelBadge from './LevelBadge';
 import ProfileShortInfo from './ProfileShortInfo';
 import SummonerLeagues from './SummonerLeagues';
+import ChampionItem from './ChampionItem';
+import RecentWinRateItem from './RecentWinRateItem';
 
 export default {
   SearchInput,
@@ -19,5 +21,7 @@ export default {
   Thumbnail,
   LevelBadge,
   ProfileShortInfo,
-  SummonerLeagues
+  SummonerLeagues,
+  ChampionItem,
+  RecentWinRateItem
 };
