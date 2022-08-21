@@ -21,7 +21,7 @@ export default function SummonerLeagues({
   };
 
   return (
-    <ul className='flex flex-col'>
+    <ul className='flex flex-col mb-2'>
       <li className='flex items-center px-2 py-2.5 border border-[#cdd2d2] bg-[#f2f2f2] mb-2'>
         <div className='w-[6.5rem] h-[6.5rem] mr-2'>
           <img src={solRank.tierRank.imageUrl} alt='solo rank' />
@@ -97,7 +97,7 @@ export default function SummonerLeagues({
 
 function Skeleton() {
   return (
-    <ul className='flex flex-col gap-2'>
+    <ul className='flex flex-col gap-2 mb-2'>
       <li
         role='league-skeleton'
         className='flex items-center px-2 py-2.5 border border-[#cdd2d2] bg-[#f2f2f2]'>
