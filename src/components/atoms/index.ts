@@ -7,6 +7,7 @@ import PreviousTiers from './PreviousTiers';
 import Thumbnail from './Thumbnail';
 import LevelBadge from './LevelBadge';
 import ProfileShortInfo from './ProfileShortInfo';
+import SummonerLeagues from './SummonerLeagues';
 
 export default {
   SearchInput,
@@ -17,5 +18,6 @@ export default {
   PreviousTiers,
   Thumbnail,
   LevelBadge,
-  ProfileShortInfo
+  ProfileShortInfo,
+  SummonerLeagues
 };
