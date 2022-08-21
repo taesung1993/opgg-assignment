@@ -38,7 +38,6 @@ export default function TabMenus<T extends { id: string; title: string }>({
 
   return (
     <nav
-      className='h-10'
       role='search-nav'
       style={{
         width: style?.tabs?.width || '100%',
