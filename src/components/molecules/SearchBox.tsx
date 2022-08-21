@@ -27,8 +27,8 @@ export default function SearchBox() {
     <Atoms.SearchResult summoners={[contents]} />
   ) : (
     <>
-      <Atoms.SearchNav
-        navItems={navItems}
+      <Atoms.TabMenus
+        tabItems={navItems}
         selectedItem={selectedItem}
         setSelectedItem={setSelectedItem}
       />

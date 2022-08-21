@@ -1,6 +1,6 @@
 import SearchInput from './SearchInput';
 import SearchButton from './SearchButton';
-import SearchNav from './SearchNav';
+import TabMenus from './TabMenus';
 import SearchContent from './SearchContent';
 import SearchResult from './SearchResult';
 import PreviousTiers from './PreviousTiers';
@@ -12,7 +12,7 @@ import SummonerLeagues from './SummonerLeagues';
 export default {
   SearchInput,
   SearchButton,
-  SearchNav,
+  TabMenus,
   SearchContent,
   SearchResult,
   PreviousTiers,
