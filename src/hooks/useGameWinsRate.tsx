@@ -19,6 +19,8 @@ export const useGameWinsRate = (name: string) => {
     ['gameWinsRate', name],
     getGameWinsRateInQueryFn,
     {
+      refetchOnWindowFocus: false,
+      retry: 0,
       onSuccess: (data) => {
         setGameWinsRate({
           status: 'success',
