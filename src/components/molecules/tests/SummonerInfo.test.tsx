@@ -22,7 +22,7 @@ describe('<SummonerInfo/>', () => {
     expect(skeletons).toHaveLength(2);
   });
 
-  it('데이터가 정상일 경우, 바인딩 되는 솔로랭크에서만 게임 수, LP 정보, 전적(승 / 패), 승률을 확인한다.', () => {
+  it('데이터가 정상일 경우, 바인딩 되는 솔로랭크/자유랭크 게임 수, LP 정보, 전적(승 / 패), 승률을 확인한다.', () => {
     render(
       <RecoilRoot
         initializeState={({ set }) => {
@@ -53,7 +53,20 @@ describe('<SummonerInfo/>', () => {
 
     const winsRate = screen.getByRole('solRank-wins-rate');
     const percent = Math.floor((986 / 1519) * 100);
-    console.log(percent);
     expect(winsRate).toHaveTextContent(`승률 ${percent}%`);
+
+    const freeRank = screen.queryByText('자유 5:5 랭크');
+    expect(freeRank).toBeInTheDocument();
+
+    const totalGamesInFree = screen.getByRole('free-tier-division');
+    expect(totalGamesInFree).toBeInTheDocument();
+    expect(totalGamesInFree).toHaveTextContent('Gold');
+
+    const gameTotalsInFree = screen.getByRole('freeRank-game-totals');
+    expect(gameTotalsInFree).toHaveTextContent(/95승 413패/);
+
+    const winsRateInFree = screen.getByRole('freeRank-wins-rate');
+    const percentInFree = Math.floor((95 / 508) * 100);
+    expect(winsRateInFree).toHaveTextContent(`승률 ${percentInFree}%`);
   });
 });

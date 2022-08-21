@@ -13,7 +13,7 @@ export default function SummonerLeagues({
     return <></>;
   }
 
-  const [solRank, _] = data;
+  const [solRank, freeRank] = data;
   const calculateWinRate = (wins: number, losses: number) => {
     const total = wins + losses;
     const percent = Math.floor((wins / total) * 100);
@@ -61,14 +61,33 @@ export default function SummonerLeagues({
 
       <li className='flex items-center px-7 py-[1.0625rem] border border-[#cdd2d2] bg-[#f2f2f2]'>
         <div className='w-16 h-16 mr-7'>
-          <img src='/images/unranked.png' alt='free rank' />
+          <img src={freeRank.tierRank.imageUrl} alt='free rank' />
         </div>
         <div>
-          <div className='h-[0.8125rem] text-[0.6875rem] text-[#879292] mb-1'>
+          <div className='h-[0.8125rem] text-[0.6875rem] text-[#879292]'>
             자유 5:5 랭크
           </div>
-          <div className='h-[0.8125rem] text-[#879292] text-[0.8175rem] font-bold'>
-            UnRanked
+          <div
+            className='text-[0.8125rem] text-[#1f8ecd] font-bold'
+            role='free-tier-division'>
+            {freeRank.tierRank.tierDivision}
+          </div>
+          <div className='flex items-center'>
+            <span
+              className='font-bold text-xs text-[#555e5e]'
+              role='freeRank-tier-lp'>
+              {freeRank.tierRank.lp.toLocaleString()} LP
+            </span>
+            <span
+              className='text-xs text-[#879292]'
+              role='freeRank-game-totals'>
+              &nbsp;/ {freeRank.wins}승 {freeRank.losses}패
+            </span>
+          </div>
+          <div
+            className='h-[0.9375rem] text-xs text-[#879292]'
+            role='freeRank-wins-rate'>
+            승률 {calculateWinRate(freeRank.wins, freeRank.losses)}%
           </div>
         </div>
       </li>
