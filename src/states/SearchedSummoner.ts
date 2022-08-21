@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import { getSummoner } from '../controllers/getSummoner';
+import { getSummoner } from '../controllers/summonerController';
 import { ISummoner } from '../models/interfaces/Summoner';
 import SearchKeyword from './SearchKeyword';
 

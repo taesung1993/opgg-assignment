@@ -4,7 +4,7 @@ import {
   isThatSummonerLiking,
   recordSummonerInLocal,
   removeSummonerInLocal
-} from '../../controllers/recordSummoner';
+} from '../../controllers/localSummonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
 import { RiCloseFill } from 'react-icons/ri';
 import { useCallback, useMemo, useState, MouseEvent } from 'react';

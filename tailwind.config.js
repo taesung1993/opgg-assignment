@@ -19,7 +19,11 @@ module.exports = {
         greyish: '#b6b6b6',
         'greyish-two': '#a7a7a7',
         'greyish-three': '#e3e3e3',
-        'greyish-four': '#9c9c9c'
+        'greyish-four': '#9c9c9c',
+        border: '#d0d3d4',
+        'shimmer-1': 'rgba(255, 255, 255, 0)',
+        'shimmer-2': 'rgba(255, 255, 255, 0.2) 20%',
+        'shimmer-3': 'rgba(255, 255, 255, 0.2) 60%'
       }
     },
     fontFamily: {
