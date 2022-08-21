@@ -4,14 +4,11 @@ import { useQuery } from 'react-query';
 import { useRecoilValue } from 'recoil';
 import States from '../../states';
 import { getSummonerInQueryFn } from '../../controllers/summonerController';
-import { ISummoner } from '../../models/interfaces/Summoner';
+import { useSummoner } from '../../hooks/useSummoner';
 
 export default function Home() {
   const summonerName = useRecoilValue(States.SummonerName);
-  const _ = useQuery(['summoner', summonerName], getSummonerInQueryFn, {
-    refetchOnWindowFocus: false,
-    suspense: true
-  });
+  const _ = useSummoner(summonerName);
 
   return (
     <Templates.Nested>
