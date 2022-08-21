@@ -8,8 +8,9 @@ import {
   getSummonerInQueryFn
 } from '../../controllers/summonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
-import { AxiosError } from 'axios';
 import { IGameWinsRate } from '../../models/interfaces/GameWinsRate';
+import { IChampion } from '../../models/interfaces/Champion';
+import { IRecentWinRate } from '../../models/interfaces/RecentWinRate';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
@@ -41,7 +42,11 @@ export default function Home() {
       onSuccess: (data: IGameWinsRate) => {
         setGameWinsRate({
           status: 'success',
-          data
+          data: {
+            ...data,
+            champions: data.champions.sort(sortChampions),
+            recentWinRate: data.recentWinRate.sort(sortRecentWinRate)
+          }
         });
       },
       onError: (err: any) => {
@@ -58,4 +63,36 @@ export default function Home() {
       <Organisms.Main />
     </Templates.Nested>
   );
+}
+
+function sortChampions(championA: IChampion, championB: IChampion): number {
+  const { games: gamesA } = championA;
+  const { games: gamesB } = championB;
+
+  if (gamesA > gamesB) {
+    return -1;
+  }
+  if (gamesA === gamesB) {
+    return 0;
+  }
+  return 1;
+}
+
+function sortRecentWinRate(
+  recentWinRateA: IRecentWinRate,
+  recentWinRateB: IRecentWinRate
+) {
+  const { wins: winsA, losses: lossesA } = recentWinRateA;
+  const { wins: winsB, losses: lossesB } = recentWinRateB;
+
+  const totalA = winsA + lossesA;
+  const totalB = winsB + lossesB;
+
+  if (totalA > totalB) {
+    return -1;
+  }
+  if (totalA === totalB) {
+    return 0;
+  }
+  return 1;
 }

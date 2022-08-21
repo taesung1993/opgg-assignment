@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import Molecules from '.';
+import States from '../../states';
 import Atoms from '../atoms';
 
 interface TabItem {
@@ -28,15 +31,16 @@ const style = {
 export default function WinRates() {
   const tabItems: TabItem[] = [
     {
-      id: 'tab-1',
+      id: 'champions',
       title: '챔피언 승률'
     },
     {
-      id: 'tab-2',
+      id: 'recentWinRate',
       title: '7일간 랭크 승률'
     }
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
+  const gameWinsRate = useRecoilValue(States.GameWinsRate);
   return (
     <section className='border bg-[#ededed]  border-[#cdd2d2] rounded-sm'>
       <Atoms.TabMenus
@@ -45,7 +49,10 @@ export default function WinRates() {
         setSelectedItem={setSelectedTabItem}
         style={style}
       />
-      <div>hello</div>
+      <Molecules.WinRatesContent
+        gameWinsRate={gameWinsRate}
+        selectedTabItem={selectedTabItem}
+      />
     </section>
   );
 }
