@@ -22,6 +22,6 @@ export const getSummonerInQueryFn = async ({
     );
     return data.summoner;
   } catch (err: any) {
-    throw new Error('소환사를 불러오는데 실패하였습니다.');
+    throw new Error('소환사 정보를 불러오는데 실패하였습니다.');
   }
 };
