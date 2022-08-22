@@ -11,4 +11,5 @@ export interface IChampion {
   losses: number;
   cs: number;
   rank: number;
+  level?: number;
 }
