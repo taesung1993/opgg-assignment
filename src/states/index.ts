@@ -3,11 +3,13 @@ import SearchKeyword from './SearchKeyword';
 import SummonerName from './SummonerName';
 import SummonerProfile from './SummonerProfile';
 import MostInfo from './MostInfo';
+import Matches from './Matches';
 
 export default {
   SearchKeyword,
   SearchedSummoner,
   SummonerName,
   SummonerProfile,
-  MostInfo
+  MostInfo,
+  Matches
 };
