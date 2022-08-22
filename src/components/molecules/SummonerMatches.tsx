@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import Molecules from './index';
+import States from '../../states';
 import Atoms from '../atoms';
 
 interface TabItem {
@@ -42,6 +45,18 @@ export default function SummonerMatches() {
     }
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
+  const { status, data } = useRecoilValue(States.Matches);
+
+  if (status === 'loading') {
+    return <div>loading...</div>;
+  }
+
+  if (status === 'error') {
+    return <div>error...</div>;
+  }
+
+  const { champions, games, positions, summary } = data;
+
   return (
     <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>
       <Atoms.TabMenus
@@ -50,6 +65,7 @@ export default function SummonerMatches() {
         setSelectedItem={setSelectedTabItem}
         style={styleOfTabItems}
       />
+      <Molecules.SummonerSummaryInMatches />
     </section>
   );
 }
