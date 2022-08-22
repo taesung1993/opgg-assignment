@@ -1,5 +1,22 @@
+import axios from 'axios';
+import { QueryFunctionContext } from 'react-query';
 import { IChampion } from '../models/interfaces/Champion';
 import { IChampionWinRate } from '../models/interfaces/ChampionWinRate';
+import { IMostInfo } from '../models/interfaces/MostInfo';
+
+export const getMostInfo = async ({
+  queryKey
+}: QueryFunctionContext): Promise<IMostInfo> => {
+  const [_, name] = queryKey;
+  const API_URL = `https://codingtest.op.gg/api/summoner/${name}/mostInfo?hl=ko`;
+
+  try {
+    const { data } = await axios.get<IMostInfo>(API_URL);
+    return data;
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
+};
 
 export const sortChampions = (
   championA: IChampion,

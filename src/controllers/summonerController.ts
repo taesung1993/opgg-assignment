@@ -26,17 +26,3 @@ export const getSummonerInQueryFn = async ({
     throw new Error('소환사 정보를 불러오는데 실패하였습니다.');
   }
 };
-
-export const getMostInfo = async ({
-  queryKey
-}: QueryFunctionContext): Promise<IMostInfo> => {
-  const [_, name] = queryKey;
-  const API_URL = `https://codingtest.op.gg/api/summoner/${name}/mostInfo?hl=ko`;
-
-  try {
-    const { data } = await axios.get<IMostInfo>(API_URL);
-    return data;
-  } catch (err: any) {
-    throw new Error(err.message);
-  }
-};

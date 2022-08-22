@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
-import { getMostInfo } from '../controllers/summonerController';
+import { getMostInfo } from '../controllers/mostInfoController';
 import { IMostInfo } from '../models/interfaces/MostInfo';
 import States from '../states';
 
