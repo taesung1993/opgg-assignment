@@ -40,7 +40,7 @@ export default function MostInfo() {
     }
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
-  const gameWinsRate = useRecoilValue(States.GameWinsRate);
+  const mostInfo = useRecoilValue(States.MostInfo);
   return (
     <section className='border bg-[#ededed]  border-[#cdd2d2] rounded-sm'>
       <Atoms.TabMenus
@@ -50,7 +50,7 @@ export default function MostInfo() {
         style={style}
       />
       <Molecules.MostInfoContent
-        gameWinsRate={gameWinsRate}
+        mostInfo={mostInfo}
         selectedTabItem={selectedTabItem}
       />
     </section>

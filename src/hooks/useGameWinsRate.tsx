@@ -6,7 +6,7 @@ import { IMostInfo } from '../models/interfaces/MostInfo';
 import States from '../states';
 
 export const useMostInfo = (name: string) => {
-  const setMostInfo = useSetRecoilState(States.GameWinsRate);
+  const setMostInfo = useSetRecoilState(States.MostInfo);
 
   useEffect(() => {
     setMostInfo({

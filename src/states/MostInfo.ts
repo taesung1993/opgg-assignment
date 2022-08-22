@@ -5,7 +5,7 @@ import { IMostInfo } from '../models/interfaces/MostInfo';
 type State = AsyncData<IMostInfo>;
 
 export default atom<State>({
-  key: 'gameWinsRate',
+  key: 'mostInfo',
   default: {
     status: 'loading',
     data: null

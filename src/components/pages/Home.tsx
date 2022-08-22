@@ -14,7 +14,7 @@ import { IChampionWinRate } from '../../models/interfaces/ChampionWinRate';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
-  const setMostInfo = useSetRecoilState(States.GameWinsRate);
+  const setMostInfo = useSetRecoilState(States.MostInfo);
   const summonerName = useRecoilValue(States.SummonerName);
 
   useQueries([

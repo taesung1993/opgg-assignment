@@ -2,21 +2,18 @@ import Molecules from './index';
 import { AsyncData } from '../../models/interfaces/AsyncData';
 import { IMostInfo } from '../../models/interfaces/MostInfo';
 
-type GameWinsRate = AsyncData<IMostInfo>;
+type MostInfo = AsyncData<IMostInfo>;
 
 interface Props {
-  gameWinsRate: GameWinsRate;
+  mostInfo: MostInfo;
   selectedTabItem: {
     id: string;
     title: string;
   };
 }
 
-export default function MostInfoContent({
-  gameWinsRate,
-  selectedTabItem
-}: Props) {
-  const { status, data } = gameWinsRate;
+export default function MostInfoContent({ mostInfo, selectedTabItem }: Props) {
+  const { status, data } = mostInfo;
 
   if (status === 'loading') {
     return (

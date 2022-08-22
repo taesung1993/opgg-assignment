@@ -35,7 +35,7 @@ describe('<MostInfo/>', () => {
     render(
       <RecoilRoot
         initializeState={({ set }) => {
-          set(States.GameWinsRate, {
+          set(States.MostInfo, {
             status: 'error',
             data: 'Something went wrong'
           });
@@ -55,7 +55,7 @@ describe('<MostInfo/>', () => {
     render(
       <RecoilRoot
         initializeState={({ set }) => {
-          set(States.GameWinsRate, {
+          set(States.MostInfo, {
             status: 'success',
             data: MOCK_GAME_WINS_RATE
           });
