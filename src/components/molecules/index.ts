@@ -1,7 +1,7 @@
 import Search from './Search';
 import SearchBox from './SearchBox';
 import Profile from './Profile';
-import SummonerDTO from './SummonerDTO';
+import SummonerInfo from './SummonerInfo';
 import WinRates from './WinRates';
 import WinRatesContent from './WinRatesContent';
 import Champions from './Champions';
@@ -12,7 +12,7 @@ export default {
   Search,
   SearchBox,
   Profile,
-  SummonerDTO,
+  SummonerInfo,
   WinRates,
   WinRatesContent,
   Champions,

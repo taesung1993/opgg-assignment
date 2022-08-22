@@ -4,7 +4,7 @@ import { MOCK_SUMMONER } from '../../../mocks/constants';
 import States from '../../../states';
 import Molecules from '../index';
 
-describe('<SummonerDTO/>', () => {
+describe('<SummonerInfo/>', () => {
   it('데이터가 로딩일 경우, 스켈레톤 두 개가 디스플레이 뙨다.', () => {
     render(
       <RecoilRoot
@@ -14,7 +14,7 @@ describe('<SummonerDTO/>', () => {
             data: null
           });
         }}>
-        <Molecules.SummonerDTO />
+        <Molecules.SummonerInfo />
       </RecoilRoot>
     );
 
@@ -31,7 +31,7 @@ describe('<SummonerDTO/>', () => {
             data: MOCK_SUMMONER
           });
         }}>
-        <Molecules.SummonerDTO />
+        <Molecules.SummonerInfo />
       </RecoilRoot>
     );
 
