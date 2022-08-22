@@ -14,7 +14,7 @@ export default function SearchResult({ summoners }: Props) {
   const setSummonerName = useSetRecoilState(States.SummonerName);
   const onClick = useCallback((summoner: ISummoner) => {
     recordSummonerInLocal(summoner, 'latest');
-    // setSummonerName(summoner.name);
+    setSummonerName(summoner.name);
   }, []);
 
   return (
