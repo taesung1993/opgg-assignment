@@ -3,7 +3,7 @@ import { IGame } from './Game';
 import { IPosition } from './Position';
 import { ISummary } from './Summary';
 
-export interface IMatchesDTO {
+export interface IMatches {
   champions: IChampion[];
   games: IGame[];
   positions: IPosition[];
