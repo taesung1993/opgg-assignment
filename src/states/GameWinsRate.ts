@@ -1,11 +1,11 @@
 import { atom } from 'recoil';
 import { AsyncData } from '../models/interfaces/AsyncData';
-import { ISummoner } from '../models/interfaces/Summoner';
+import { IGameWinsRate } from '../models/interfaces/GameWinsRate';
 
-type State = AsyncData<ISummoner>;
+type State = AsyncData<IGameWinsRate>;
 
 export default atom<State>({
-  key: 'SummonerProfile',
+  key: 'gameWinsRate',
   default: {
     status: 'loading',
     data: null
