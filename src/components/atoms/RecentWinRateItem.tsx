@@ -14,7 +14,9 @@ export default function RecentWinRateItem({
   }, [wins, losses]);
 
   return (
-    <li className='h-12 py-2 pl-[0.9375rem] pr-2 flex items-center justify-between'>
+    <li
+      className='h-12 py-2 pl-[0.9375rem] pr-2 flex items-center justify-between border-b border-b-[#cdd2d2] last:border-b-0'
+      role='recent-winRate-item'>
       <section className='flex items-center'>
         <div className='w-8 h-8 rounded-full overflow-hidden mr-2.5'>
           <img
@@ -23,7 +25,9 @@ export default function RecentWinRateItem({
             alt={`${name}'s image`}
           />
         </div>
-        <div className='text-[0.8125rem] font-bold w-16'>{name}</div>
+        <div className='text-[0.8125rem] font-bold w-16 overflow-hidden whitespace-nowrap text-ellipsis'>
+          {name}
+        </div>
       </section>
 
       <section className='flex items-center'>

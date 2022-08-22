@@ -7,7 +7,9 @@ interface Props {
 
 export default function ChampionItem({ champion }: Props) {
   return (
-    <li className='flex items-center px-4 py-1 h-[3.3125rem] border-b border-b-[#cdd2d2] last:border-b-0'>
+    <li
+      className='flex items-center px-4 py-1 h-[3.3125rem] border-b border-b-[#cdd2d2] last:border-b-0'
+      role='champion-item'>
       <div className='w-[2.8125rem] h-[2.8125] rounded-full overflow-hidden mr-2.5'>
         <img
           className='w-full h-full'
@@ -15,13 +17,13 @@ export default function ChampionItem({ champion }: Props) {
           alt={`${champion.name}'s image`}
         />
       </div>
-      <div className='w-[5.7rem]'>
-        <h6 className='text-[#5e5e5e] text-[0.8125rem] mb-[0.1875rem] font-bold'>
+      <div className='w-[4.6rem]'>
+        <h6 className='text-[#5e5e5e] text-[0.8125rem] mb-[0.1875rem] font-bold whitespace-nowrap text-ellipsis overflow-hidden'>
           {champion.name}
         </h6>
         <div className='text-[#879292] text-[0.6875rem]'>CS {champion.cs}</div>
       </div>
-      <div className='flex-1 text-center'>
+      <div className='flex-1 text-center mr-6'>
         <Average
           kills={champion.kills}
           deaths={champion.deaths}
