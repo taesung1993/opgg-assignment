@@ -6,7 +6,7 @@ import MostInfo from './MostInfo';
 import MostInfoContent from './MostInfoContent';
 import MostChampion from './MostChampion';
 import MostChampionWinRate from './MostChampionWinRate';
-import SummonerGameTotal from './SummonerGameTotal';
+import SummonerMatches from './SummonerMatches';
 
 export default {
   Search,
@@ -17,5 +17,5 @@ export default {
   MostInfoContent,
   MostChampion,
   MostChampionWinRate,
-  SummonerGameTotal
+  SummonerMatches
 };

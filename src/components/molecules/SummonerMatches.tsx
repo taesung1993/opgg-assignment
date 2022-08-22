@@ -26,7 +26,7 @@ const styleOfTabItems = {
   }
 };
 
-export default function SummonerGameTotal() {
+export default function SummonerMatches() {
   const tabItems: TabItem[] = [
     {
       id: 'all',

@@ -36,7 +36,7 @@ export default function SummonerInfo() {
         <Molecules.MostInfo />
       </section>
       <section className='flex-1'>
-        <Molecules.SummonerGameTotal />
+        <Molecules.SummonerMatches />
       </section>
     </section>
   );
