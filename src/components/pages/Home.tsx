@@ -36,7 +36,7 @@ export default function Home() {
       }
     },
     {
-      queryKey: ['gameWinsRate', summonerName],
+      queryKey: ['mostInfo', summonerName],
       queryFn: getMostInfo,
       refetchOnWindowFocus: false,
       onSuccess: (data: IMostInfo) => {
