@@ -6,11 +6,11 @@ import States from '../../../states';
 import { MOCK_GAME_WINS_RATE } from '../../../mocks/constants';
 import userEvent from '@testing-library/user-event';
 
-describe('<WinRates/>', () => {
+describe('<MostInfo/>', () => {
   it('에러 없이 렌더링이 되야 합니다.', () => {
     render(
       <RecoilRoot>
-        <Molecules.WinRates />
+        <Molecules.MostInfo />
       </RecoilRoot>
     );
   });
@@ -18,7 +18,7 @@ describe('<WinRates/>', () => {
   it('로딩할 때 스켈레톤의 갯수를 파악합니다.', () => {
     render(
       <RecoilRoot>
-        <Molecules.WinRates />
+        <Molecules.MostInfo />
       </RecoilRoot>
     );
 
@@ -40,7 +40,7 @@ describe('<WinRates/>', () => {
             data: 'Something went wrong'
           });
         }}>
-        <Molecules.WinRates />
+        <Molecules.MostInfo />
       </RecoilRoot>
     );
 
@@ -60,7 +60,7 @@ describe('<WinRates/>', () => {
             data: MOCK_GAME_WINS_RATE
           });
         }}>
-        <Molecules.WinRates />
+        <Molecules.MostInfo />
       </RecoilRoot>
     );
 

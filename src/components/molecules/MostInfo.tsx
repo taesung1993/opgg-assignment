@@ -28,7 +28,7 @@ const style = {
   }
 };
 
-export default function WinRates() {
+export default function MostInfo() {
   const tabItems: TabItem[] = [
     {
       id: 'champions',

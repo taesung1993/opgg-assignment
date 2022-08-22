@@ -33,7 +33,7 @@ export default function SummonerInfo() {
     <section className='flex w-full max-w-opgg mx-auto'>
       <section className='w-[18.75rem] mr-2.5 pt-2.5'>
         <Atoms.SummonerLeagues {...leagues} />
-        <Molecules.WinRates />
+        <Molecules.MostInfo />
       </section>
       <section className='flex-1'>
         <Molecules.SummonerGameTotal />
