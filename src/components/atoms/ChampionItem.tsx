@@ -76,7 +76,7 @@ function Average({
 
   return (
     <div
-      className='text-[0.8125rem] mb-[0.1875rem] font-bold'
+      className='text-[0.8125rem] mb-[0.1875rem] font-bold whitespace-nowrap'
       style={{
         color: getColor(average)
       }}>
