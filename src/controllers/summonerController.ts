@@ -27,7 +27,7 @@ export const getSummonerInQueryFn = async ({
   }
 };
 
-export const getGameWinsRateInQueryFn = async ({
+export const getMostInfo = async ({
   queryKey
 }: QueryFunctionContext): Promise<IMostInfo> => {
   const [_, name] = queryKey;

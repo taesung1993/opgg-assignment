@@ -1,38 +1,34 @@
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
-import { getGameWinsRateInQueryFn } from '../controllers/summonerController';
+import { getMostInfo } from '../controllers/summonerController';
 import { IMostInfo } from '../models/interfaces/MostInfo';
 import States from '../states';
 
-export const useGameWinsRate = (name: string) => {
-  const setGameWinsRate = useSetRecoilState(States.GameWinsRate);
+export const useMostInfo = (name: string) => {
+  const setMostInfo = useSetRecoilState(States.GameWinsRate);
 
   useEffect(() => {
-    setGameWinsRate({
+    setMostInfo({
       status: 'loading',
       data: null
     });
   }, []);
 
-  return useQuery<IMostInfo, Error>(
-    ['gameWinsRate', name],
-    getGameWinsRateInQueryFn,
-    {
-      refetchOnWindowFocus: false,
-      retry: 0,
-      onSuccess: (data) => {
-        setGameWinsRate({
-          status: 'success',
-          data
-        });
-      },
-      onError: (err) => {
-        setGameWinsRate({
-          status: 'error',
-          data: err.message
-        });
-      }
+  return useQuery<IMostInfo, Error>(['gameWinsRate', name], getMostInfo, {
+    refetchOnWindowFocus: false,
+    retry: 0,
+    onSuccess: (data) => {
+      setMostInfo({
+        status: 'success',
+        data
+      });
+    },
+    onError: (err) => {
+      setMostInfo({
+        status: 'error',
+        data: err.message
+      });
     }
-  );
+  });
 };

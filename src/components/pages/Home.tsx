@@ -4,7 +4,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import States from '../../states';
 import { useQueries } from 'react-query';
 import {
-  getGameWinsRateInQueryFn,
+  getMostInfo,
   getSummonerInQueryFn
 } from '../../controllers/summonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
@@ -14,7 +14,7 @@ import { IChampionWinRate } from '../../models/interfaces/ChampionWinRate';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
-  const setGameWinsRate = useSetRecoilState(States.GameWinsRate);
+  const setMostInfo = useSetRecoilState(States.GameWinsRate);
   const summonerName = useRecoilValue(States.SummonerName);
 
   useQueries([
@@ -37,10 +37,10 @@ export default function Home() {
     },
     {
       queryKey: ['gameWinsRate', summonerName],
-      queryFn: getGameWinsRateInQueryFn,
+      queryFn: getMostInfo,
       refetchOnWindowFocus: false,
       onSuccess: (data: IMostInfo) => {
-        setGameWinsRate({
+        setMostInfo({
           status: 'success',
           data: {
             ...data,
@@ -50,7 +50,7 @@ export default function Home() {
         });
       },
       onError: (err: any) => {
-        setGameWinsRate({
+        setMostInfo({
           status: 'error',
           data: err.message
         });
