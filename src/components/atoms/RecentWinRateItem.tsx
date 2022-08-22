@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { IRecentWinRate } from '../../models/interfaces/RecentWinRate';
+import { IChampionWinRate } from '../../models/interfaces/ChampionWinRate';
 
 interface Props {
-  recentWinRate: IRecentWinRate;
+  championWinRate: IChampionWinRate;
 }
 
 export default function RecentWinRateItem({
-  recentWinRate: { wins, losses, imageUrl, name }
+  championWinRate: { wins, losses, imageUrl, name }
 }: Props) {
   const winRrate = useMemo(() => {
     const total = wins + losses;

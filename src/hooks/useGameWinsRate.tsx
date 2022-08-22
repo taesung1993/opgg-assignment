@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import { useSetRecoilState } from 'recoil';
 import { getGameWinsRateInQueryFn } from '../controllers/summonerController';
-import { IGameWinsRate } from '../models/interfaces/GameWinsRate';
+import { IMostInfo } from '../models/interfaces/MostInfo';
 import States from '../states';
 
 export const useGameWinsRate = (name: string) => {
@@ -15,7 +15,7 @@ export const useGameWinsRate = (name: string) => {
     });
   }, []);
 
-  return useQuery<IGameWinsRate, Error>(
+  return useQuery<IMostInfo, Error>(
     ['gameWinsRate', name],
     getGameWinsRateInQueryFn,
     {

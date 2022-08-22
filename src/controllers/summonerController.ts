@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { QueryFunctionContext } from 'react-query';
-import { IGameWinsRate } from '../models/interfaces/GameWinsRate';
+import { IMostInfo } from '../models/interfaces/MostInfo';
 import { ISummoner } from '../models/interfaces/Summoner';
 
 export const getSummoner = async (name: string) => {
@@ -29,12 +29,12 @@ export const getSummonerInQueryFn = async ({
 
 export const getGameWinsRateInQueryFn = async ({
   queryKey
-}: QueryFunctionContext): Promise<IGameWinsRate> => {
+}: QueryFunctionContext): Promise<IMostInfo> => {
   const [_, name] = queryKey;
   const API_URL = `https://codingtest.op.gg/api/summoner/${name}/mostInfo?hl=ko`;
 
   try {
-    const { data } = await axios.get<IGameWinsRate>(API_URL);
+    const { data } = await axios.get<IMostInfo>(API_URL);
     return data;
   } catch (err: any) {
     throw new Error(err.message);

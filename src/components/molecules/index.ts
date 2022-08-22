@@ -4,8 +4,8 @@ import SummonerProfile from './SummonerProfile';
 import SummonerInfo from './SummonerInfo';
 import MostInfo from './MostInfo';
 import MostInfoContent from './MostInfoContent';
-import Champions from './Champions';
-import RecentWinRates from './RecentWinRates';
+import MostChampion from './MostChampion';
+import MostChampionWinRate from './MostChampionWinRate';
 import SummonerGameTotal from './SummonerGameTotal';
 
 export default {
@@ -15,7 +15,7 @@ export default {
   SummonerInfo,
   MostInfo,
   MostInfoContent,
-  Champions,
-  RecentWinRates,
+  MostChampion,
+  MostChampionWinRate,
   SummonerGameTotal
 };

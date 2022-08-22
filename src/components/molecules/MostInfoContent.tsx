@@ -1,8 +1,8 @@
 import Molecules from './index';
 import { AsyncData } from '../../models/interfaces/AsyncData';
-import { IGameWinsRate } from '../../models/interfaces/GameWinsRate';
+import { IMostInfo } from '../../models/interfaces/MostInfo';
 
-type GameWinsRate = AsyncData<IGameWinsRate>;
+type GameWinsRate = AsyncData<IMostInfo>;
 
 interface Props {
   gameWinsRate: GameWinsRate;
@@ -47,9 +47,9 @@ export default function MostInfoContent({
   return (
     <section>
       {selectedTabId === 'champions' ? (
-        <Molecules.Champions champions={champions} />
+        <Molecules.MostChampion champions={champions} />
       ) : (
-        <Molecules.RecentWinRates recentWinRates={recentWinRate} />
+        <Molecules.MostChampionWinRate championWinRates={recentWinRate} />
       )}
     </section>
   );

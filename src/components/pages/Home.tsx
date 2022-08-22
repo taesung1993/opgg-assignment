@@ -8,9 +8,9 @@ import {
   getSummonerInQueryFn
 } from '../../controllers/summonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
-import { IGameWinsRate } from '../../models/interfaces/GameWinsRate';
+import { IMostInfo } from '../../models/interfaces/MostInfo';
 import { IChampion } from '../../models/interfaces/Champion';
-import { IRecentWinRate } from '../../models/interfaces/RecentWinRate';
+import { IChampionWinRate } from '../../models/interfaces/ChampionWinRate';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
@@ -39,7 +39,7 @@ export default function Home() {
       queryKey: ['gameWinsRate', summonerName],
       queryFn: getGameWinsRateInQueryFn,
       refetchOnWindowFocus: false,
-      onSuccess: (data: IGameWinsRate) => {
+      onSuccess: (data: IMostInfo) => {
         setGameWinsRate({
           status: 'success',
           data: {
@@ -79,8 +79,8 @@ function sortChampions(championA: IChampion, championB: IChampion): number {
 }
 
 function sortRecentWinRate(
-  recentWinRateA: IRecentWinRate,
-  recentWinRateB: IRecentWinRate
+  recentWinRateA: IChampionWinRate,
+  recentWinRateB: IChampionWinRate
 ) {
   const { wins: winsA, losses: lossesA } = recentWinRateA;
   const { wins: winsB, losses: lossesB } = recentWinRateB;
