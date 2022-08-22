@@ -1,3 +1,4 @@
+import React from 'react';
 import Templates from '../templates';
 import Organisms from '../organisms';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -19,8 +20,7 @@ export default function Home() {
   const setMostInfo = useSetRecoilState(States.MostInfo);
   const setMatches = useSetRecoilState(States.Matches);
   const summonerName = useRecoilValue(States.SummonerName);
-
-  useQueries([
+  const status = useQueries([
     {
       queryKey: ['summoner', summonerName],
       queryFn: getSummonerInQueryFn,
@@ -36,10 +36,11 @@ export default function Home() {
           status: 'error',
           data: err.message
         });
-      }
+      },
+      notifyOnChangeProps: ['remove']
     },
     {
-      queryKey: ['mostInfo', summonerName],
+      queryKey: [summonerName, 'mostInfo'],
       queryFn: getMostInfo,
       refetchOnWindowFocus: false,
       onSuccess: (data: IMostInfo) => {
@@ -57,10 +58,11 @@ export default function Home() {
           status: 'error',
           data: err.message
         });
-      }
+      },
+      notifyOnChangeProps: ['remove']
     },
     {
-      queryKey: ['matches', summonerName],
+      queryKey: [summonerName, 'matches'],
       queryFn: getMatchesInQueryFn,
       refetchOnWindowFocus: false,
       onSuccess: (data: IMatches) => {
@@ -74,7 +76,8 @@ export default function Home() {
           status: 'error',
           data: err.message
         });
-      }
+      },
+      notifyOnChangeProps: ['data', 'error']
     }
   ]);
 

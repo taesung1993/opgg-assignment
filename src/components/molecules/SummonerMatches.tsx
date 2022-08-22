@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import Molecules from './index';
 import States from '../../states';
 import Atoms from '../atoms';
+import { filterGames } from '../../controllers/matchesController';
 
 interface TabItem {
-  id: string;
+  id: 'all' | 'solRank' | 'freeRank';
   title: string;
 }
 
@@ -46,6 +47,12 @@ export default function SummonerMatches() {
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
   const { status, data } = useRecoilValue(States.Matches);
+  const filteredGames = useMemo(() => {
+    if (status === 'success' && data.games) {
+      return filterGames(selectedTabItem.id, data.games);
+    }
+    return [];
+  }, [data, selectedTabItem.id]);
 
   if (status === 'loading') {
     return <div>loading...</div>;
@@ -55,8 +62,6 @@ export default function SummonerMatches() {
     return <div>error...</div>;
   }
 
-  const { champions, games, positions, summary } = data;
-
   return (
     <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>
       <Atoms.TabMenus
@@ -65,7 +70,13 @@ export default function SummonerMatches() {
         setSelectedItem={setSelectedTabItem}
         style={styleOfTabItems}
       />
-      <Molecules.SummonerSummaryInMatches />
+      <Molecules.SummonerSummaryInMatches
+        games={filteredGames}
+        positions={data.positions}
+        summary={data.summary}
+        champions={data.champions}
+        gameType={selectedTabItem.id}
+      />
     </section>
   );
 }
