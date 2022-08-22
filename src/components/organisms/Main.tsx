@@ -4,7 +4,7 @@ export default function Main() {
   return (
     <>
       <Molecules.Profile />
-      <Molecules.SummonerInfo />
+      <Molecules.SummonerDTO />
     </>
   );
 }

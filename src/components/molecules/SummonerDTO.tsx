@@ -6,7 +6,7 @@ import States from '../../states';
 import Molecules from './index';
 import Atoms from '../atoms';
 
-export default function SummonerInfo() {
+export default function SummonerDTO() {
   const { status, data } = useRecoilValue(States.SummonerProfile);
   const leagues = useMemo<AsyncData<ILeague[]>>(() => {
     if (status === 'loading') {
