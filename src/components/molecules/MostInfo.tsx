@@ -49,7 +49,7 @@ export default function MostInfo() {
         setSelectedItem={setSelectedTabItem}
         style={style}
       />
-      <Molecules.WinRatesContent
+      <Molecules.MostInfoContent
         gameWinsRate={gameWinsRate}
         selectedTabItem={selectedTabItem}
       />

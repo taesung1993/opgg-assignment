@@ -12,7 +12,7 @@ interface Props {
   };
 }
 
-export default function WinRatesContent({
+export default function MostInfoContent({
   gameWinsRate,
   selectedTabItem
 }: Props) {
