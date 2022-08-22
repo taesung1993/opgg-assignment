@@ -6,6 +6,7 @@ import WinRates from './WinRates';
 import WinRatesContent from './WinRatesContent';
 import Champions from './Champions';
 import RecentWinRates from './RecentWinRates';
+import SummonerTotal from './SummonerTotal';
 
 export default {
   Search,
@@ -15,5 +16,6 @@ export default {
   WinRates,
   WinRatesContent,
   Champions,
-  RecentWinRates
+  RecentWinRates,
+  SummonerTotal
 };
