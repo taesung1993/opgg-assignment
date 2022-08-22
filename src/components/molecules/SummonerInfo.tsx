@@ -36,7 +36,7 @@ export default function SummonerInfo() {
         <Molecules.WinRates />
       </section>
       <section className='flex-1'>
-        <Molecules.SummonerTotal />
+        <Molecules.SummonerGameTotal />
       </section>
     </section>
   );

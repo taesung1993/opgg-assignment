@@ -26,7 +26,7 @@ const styleOfTabItems = {
   }
 };
 
-export default function SummonerTotal() {
+export default function SummonerGameTotal() {
   const tabItems: TabItem[] = [
     {
       id: 'all',
@@ -43,7 +43,7 @@ export default function SummonerTotal() {
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
   return (
-    <section>
+    <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>
       <Atoms.TabMenus
         tabItems={tabItems}
         selectedItem={selectedTabItem}
