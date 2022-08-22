@@ -3,7 +3,7 @@ import { ISummoner } from '../../models/interfaces/Summoner';
 import States from '../../states';
 import Atoms from '../atoms';
 
-export default function Profile() {
+export default function SummonerProfile() {
   const { status, data } = useRecoilValue(States.SummonerProfile);
 
   if (status === 'loading') {

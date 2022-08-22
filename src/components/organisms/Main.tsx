@@ -3,7 +3,7 @@ import Molecules from '../molecules';
 export default function Main() {
   return (
     <>
-      <Molecules.Profile />
+      <Molecules.SummonerProfile />
       <Molecules.SummonerInfo />
     </>
   );

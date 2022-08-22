@@ -1,6 +1,6 @@
 import Search from './Search';
 import SearchBox from './SearchBox';
-import Profile from './Profile';
+import SummonerProfile from './SummonerProfile';
 import SummonerInfo from './SummonerInfo';
 import WinRates from './WinRates';
 import WinRatesContent from './WinRatesContent';
@@ -11,7 +11,7 @@ import SummonerGameTotal from './SummonerGameTotal';
 export default {
   Search,
   SearchBox,
-  Profile,
+  SummonerProfile,
   SummonerInfo,
   WinRates,
   WinRatesContent,

@@ -2,13 +2,13 @@ import { screen, render } from '@testing-library/react';
 import { RecoilRoot } from 'recoil';
 import { MOCK_SUMMONER } from '../../../mocks/constants';
 import states from '../../../states';
-import Profile from '../Profile';
+import SummonerProfile from '../SummonerProfile';
 
-describe('<Profile/>', () => {
+describe('<SummonerProfile/>', () => {
   it('데이터를 주입하지 않았을 경우에는 스켈레톤 로딩이 떠야한다.', async () => {
     render(
       <RecoilRoot>
-        <Profile />
+        <SummonerProfile />
       </RecoilRoot>
     );
 
@@ -24,7 +24,7 @@ describe('<Profile/>', () => {
             data: '소환사 정보를 불러오는데 실패하였습니다.'
           });
         }}>
-        <Profile />
+        <SummonerProfile />
       </RecoilRoot>
     );
 
@@ -44,7 +44,7 @@ describe('<Profile/>', () => {
             data: MOCK_SUMMONER
           });
         }}>
-        <Profile />
+        <SummonerProfile />
       </RecoilRoot>
     );
 
