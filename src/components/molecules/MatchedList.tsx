@@ -26,8 +26,9 @@ export default function MatchedList({ games }: Props) {
         ) => (
           <li
             key={`game-${index}`}
-            className='m-h-24 mb-2 last:mb-0 flex'
+            className='mb-2 last:mb-0 flex'
             style={{
+              height: '96px',
               backgroundColor: isWin ? '#b0ceea' : '#d6b5b2'
             }}>
             <section
@@ -60,12 +61,20 @@ export default function MatchedList({ games }: Props) {
               <Atoms.PlayersInMatch gameId={gameId} />
             </section>
             <section
-              className='w-[1.875rem]'
+              className='w-[1.875rem] flex justify-center items-end pb-3'
               style={{
                 backgroundColor: isWin ? '#7fb0e1' : '#e89c95',
                 border: isWin ? 'solid 1px #549dc7' : 'solid 1px #c8817c'
               }}>
-              2
+              <div className='w-[0.8125rem] h-2.5'>
+                <img
+                  src={
+                    isWin
+                      ? 'https://s-lol-web.op.gg/static/images/icon/common/icon-viewdetail-blue.png?v=1661142461604'
+                      : 'https://s-lol-web.op.gg/static/images/icon/common/icon-viewdetail-red.png?v=1661142461604'
+                  }
+                />
+              </div>
             </section>
           </li>
         )

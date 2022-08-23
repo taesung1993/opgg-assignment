@@ -14,10 +14,10 @@ export default function ShortMatchResult({
   return (
     <section className='w-[4.375rem] text-center pl-2 pt-[0.8125rem] pb-[0.875rem] mr-[0.875rem]'>
       <section>
-        <div className='text-[0.6875rem] font-bold -tracking-[0.42px]'>
+        <div className='text-[0.6875rem] leading-[1.2] font-bold -tracking-[0.42px] whitespace-nowrap mb-1'>
           {gameType}
         </div>
-        <div className='text-[0.6875rem] text-[#555] -tracking-[0.42px]'>
+        <div className='text-[0.6875rem] leading-[1.2] text-[#555] -tracking-[0.42px]'>
           {fromNow(createDate)}
         </div>
       </section>
@@ -30,13 +30,13 @@ export default function ShortMatchResult({
 
       <section>
         <div
-          className='text-[0.6875rem] text-[#555] -tracking-[0.42px] font-bold'
+          className='text-[0.6875rem] leading-[1.2] text-[#555] -tracking-[0.42px] font-bold mb-1'
           style={{
             color: isWin ? '#2c709b' : '#d0021b'
           }}>
           {isWin ? '승리' : '패배'}
         </div>
-        <div className='text-[0.6875rem] text-[#555] -tracking-[0.42px]'>
+        <div className='text-[0.6875rem] leading-[1.2] text-[#555] -tracking-[0.42px]'>
           {getDuration(gameLength)}
         </div>
       </section>
