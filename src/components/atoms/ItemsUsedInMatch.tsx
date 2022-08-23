@@ -15,7 +15,7 @@ export default function ItemUsedInMatch({ items, isWin, controlWards }: Props) {
     ? 'https://s-lol-web.op.gg/static/images/icon/common/icon-buildblue-p.png?v=1661142461415'
     : 'https://s-lol-web.op.gg/static/images/icon/common/icon-buildred-p.png?v=1661142461415';
   return (
-    <section className='w-[5.875rem] pt-[0.9375rem]'>
+    <section className='w-[5.875rem] pt-[0.9375rem] mr-[0.6875rem]'>
       <ul className='grid grid-cols-4 gap-0.5 w-full h-[2.875rem] mb-[0.4375rem]'>
         <li
           className='first h-[1.375rem] rounded-sm cursor-pointer'
