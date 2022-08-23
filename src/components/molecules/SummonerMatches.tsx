@@ -55,11 +55,37 @@ export default function SummonerMatches() {
   }, [data, selectedTabItem.id]);
 
   if (status === 'loading') {
-    return <div>loading...</div>;
+    return (
+      <section
+        className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'
+        role='summoner-matches-skeleton'>
+        <Atoms.TabMenus
+          tabItems={tabItems}
+          selectedItem={selectedTabItem}
+          setSelectedItem={setSelectedTabItem}
+          style={styleOfTabItems}
+        />
+        <section className='skeleton border-t border-t-[#cdd2d2] w-full h-[9.875rem]'></section>
+      </section>
+    );
   }
 
   if (status === 'error') {
-    return <div>error...</div>;
+    return (
+      <section
+        className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'
+        role='summoner-matches-skeleton'>
+        <Atoms.TabMenus
+          tabItems={tabItems}
+          selectedItem={selectedTabItem}
+          setSelectedItem={setSelectedTabItem}
+          style={styleOfTabItems}
+        />
+        <section className='border-t border-t-[#cdd2d2] w-full h-[9.875rem] text-red-500 pt-4 px-4'>
+          죄송합니다. 경기 정보를 불러오는데 실패하였습니다.
+        </section>
+      </section>
+    );
   }
 
   return (
