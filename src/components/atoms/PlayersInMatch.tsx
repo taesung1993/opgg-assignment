@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function PlayersInMatch({ gameId }: Props) {
-  const summonerName = useRecoilValue(States.SearchKeyword);
+  const summonerName = useRecoilValue(States.SummonerName);
   const [players, setPlayers] = useState<{ a: IPlayer[]; b: IPlayer[] }>({
     a: [],
     b: []
@@ -42,7 +42,11 @@ export default function PlayersInMatch({ gameId }: Props) {
               src={player.champion.imageUrl}
               alt={`${player.summonerName}'s champion`}
             />
-            <div className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px] text-[#555]'>
+            <div
+              className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px]'
+              style={{
+                color: summonerName === player.summonerName ? '#000' : '#555'
+              }}>
               {player.summonerName}
             </div>
           </li>
@@ -56,7 +60,11 @@ export default function PlayersInMatch({ gameId }: Props) {
               src={player.champion.imageUrl}
               alt={`${player.summonerName}'s champion`}
             />
-            <div className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px] text-[#555]'>
+            <div
+              className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px]'
+              style={{
+                color: summonerName === player.summonerName ? '#000' : '#555'
+              }}>
               {player.summonerName}
             </div>
           </li>
