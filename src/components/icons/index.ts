@@ -5,6 +5,8 @@ import Jng from './Jng';
 import Mid from './Mid';
 import Adc from './Adc';
 import Sup from './Sup';
+import LoseWard from './LoseWard';
+import WinWard from './WinWard';
 
 export default {
   Logo,
@@ -13,5 +15,7 @@ export default {
   Jng,
   Mid,
   Adc,
-  Sup
+  Sup,
+  LoseWard,
+  WinWard
 };

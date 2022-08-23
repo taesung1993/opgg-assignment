@@ -7,9 +7,9 @@ interface Props {
 
 export default function Nested({ children }: Props) {
   return (
-    <section>
+    <section className='min-h-screen flex flex-col'>
       <Organisms.Header />
-      <main>{children}</main>
+      <main className='flex-1 pb-20'>{children}</main>
     </section>
   );
 }

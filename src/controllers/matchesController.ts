@@ -49,6 +49,17 @@ export const getAverage = (kills: number, deaths: number, assists: number) => {
   return result;
 };
 
+export const getTeam = async (gameId: string) => {
+  try {
+    const { data } = await axios.get(
+      `https://codingtest.op.gg/api/summoner/Hide%20on%20bush/matchDetail/${gameId}?hl=ko`
+    );
+    return data;
+  } catch (err: any) {
+    throw new Error(err.message);
+  }
+};
+
 export const getColorInAverage = (average: number) => {
   if (average > 5) {
     return '#e19205';
