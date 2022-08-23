@@ -78,8 +78,8 @@ export default function ItemUsedInMatch({ items, isWin, controlWards }: Props) {
           </div>
         </li>
       </ul>
-      <div className='flex items-center'>
-        <span className='mr-0.5'>
+      <div className='flex items-center justify-center'>
+        <span className='mr-1'>
           {isWin ? <Icons.WinWard /> : <Icons.LoseWard />}
         </span>
         <span className='text-[0.6875rem] -tracking-[0.42px] text-[#000]'>

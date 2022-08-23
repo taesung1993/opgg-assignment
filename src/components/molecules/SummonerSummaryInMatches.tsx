@@ -187,7 +187,9 @@ function Positions({ positions }: { positions: IPosition[] }) {
 
   return (
     <>
-      <div className='mb-[1.375rem] text-xs text-[#666]'>선호 포지션</div>
+      <div className='mb-[1.375rem] text-xs text-[#666]'>
+        선호 포지션 (랭크)
+      </div>
       <ul className='w-full flex flex-col gap-6'>
         {positions.map(({ wins, losses, position }, index) => (
           <li

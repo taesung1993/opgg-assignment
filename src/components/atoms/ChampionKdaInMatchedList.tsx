@@ -70,7 +70,7 @@ export default function ChampionKdaInMatchedList({ stats }: Props) {
           {badges.map((badge, index) => (
             <li
               key={`badge-${index}`}
-              className='py-[0.1875rem] px-[0.3125rem] rounded-full text-[0.625rem] -tracking-[0.38px] text-[#fff]'
+              className='py-[0.1875rem] px-[0.3125rem] h-[1.125rem] rounded-full text-[0.625rem] leading-[0.625rem] -tracking-[0.38px] text-[#fff]'
               style={{
                 border: `1px solid ${badge.borderColor}`,
                 backgroundColor: badge.color
