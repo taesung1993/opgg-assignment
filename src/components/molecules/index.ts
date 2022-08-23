@@ -8,6 +8,7 @@ import MostChampion from './MostChampion';
 import MostChampionWinRate from './MostChampionWinRate';
 import SummonerMatches from './SummonerMatches';
 import SummonerSummaryInMatches from './SummonerSummaryInMatches';
+import MatchedList from './MatchedList';
 
 export default {
   Search,
@@ -19,5 +20,6 @@ export default {
   MostChampion,
   MostChampionWinRate,
   SummonerMatches,
-  SummonerSummaryInMatches
+  SummonerSummaryInMatches,
+  MatchedList
 };

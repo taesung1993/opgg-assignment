@@ -101,6 +101,7 @@ export default function SummonerMatches() {
         summary={data.summary}
         champions={data.champions}
       />
+      <Molecules.MatchedList />
     </section>
   );
 }
