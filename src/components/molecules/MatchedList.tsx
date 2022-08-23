@@ -19,7 +19,8 @@ export default function MatchedList({ games }: Props) {
             spells,
             peak,
             stats,
-            items
+            items,
+            gameId
           },
           index
         ) => (
@@ -56,6 +57,7 @@ export default function MatchedList({ games }: Props) {
                 items={items}
                 controlWards={stats.ward.visionWardsBought}
               />
+              <Atoms.PlayersInMatch gameId={gameId} />
             </section>
             <section
               className='w-[1.875rem]'

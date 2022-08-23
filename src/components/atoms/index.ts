@@ -16,6 +16,7 @@ import ChampionInMatchedList from './ChampionInMatchedList';
 import ChampionStatInMatchedList from './ChampionStatInMatchedList';
 import ChampionKdaInMatchedList from './ChampionKdaInMatchedList';
 import ItemUsedInMatch from './ItemsUsedInMatch';
+import PlayersInMatch from './PlayersInMatch';
 
 export default {
   SearchInput,
@@ -35,5 +36,6 @@ export default {
   ChampionInMatchedList,
   ChampionStatInMatchedList,
   ChampionKdaInMatchedList,
-  ItemUsedInMatch
+  ItemUsedInMatch,
+  PlayersInMatch
 };
