@@ -24,7 +24,8 @@ const style = {
     backgroundColor: '#ededed',
     color: '#5e5e5e',
     fontWeight: 'bold',
-    fontSize: '0.75rem'
+    fontSize: '0.75rem',
+    borderBottom: 'none'
   }
 };
 
