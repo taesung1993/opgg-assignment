@@ -97,11 +97,9 @@ export default function SummonerMatches() {
         style={styleOfTabItems}
       />
       <Molecules.SummonerSummaryInMatches
-        games={filteredGames}
         positions={data.positions}
         summary={data.summary}
         champions={data.champions}
-        gameType={selectedTabItem.id}
       />
     </section>
   );
