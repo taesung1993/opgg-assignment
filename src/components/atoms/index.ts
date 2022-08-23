@@ -15,6 +15,7 @@ import ShortMatchResult from './ShortMatchResult';
 import ChampionInMatchedList from './ChampionInMatchedList';
 import ChampionStatInMatchedList from './ChampionStatInMatchedList';
 import ChampionKdaInMatchedList from './ChampionKdaInMatchedList';
+import ItemUsedInMatch from './ItemsUsedInMatch';
 
 export default {
   SearchInput,
@@ -33,5 +34,6 @@ export default {
   ShortMatchResult,
   ChampionInMatchedList,
   ChampionStatInMatchedList,
-  ChampionKdaInMatchedList
+  ChampionKdaInMatchedList,
+  ItemUsedInMatch
 };
