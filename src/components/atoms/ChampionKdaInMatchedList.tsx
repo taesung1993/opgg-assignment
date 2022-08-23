@@ -11,8 +11,18 @@ export default function ChampionKdaInMatchedList({ stats }: Props) {
   >(() => {
     const result = [];
     if (stats.general.largestMultiKillString) {
+      let title = stats.general.largestMultiKillString;
+
+      if (/double/i.test(title)) {
+        title = '더블킬';
+      } else {
+        if (/triple/i.test(title)) {
+          title = '트리플킬';
+        }
+      }
+
       const item = {
-        title: stats.general.largestMultiKillString,
+        title,
         color: '#ee5a52',
         borderColor: '#bf3b36'
       };
