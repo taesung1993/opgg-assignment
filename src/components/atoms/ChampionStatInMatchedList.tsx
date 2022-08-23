@@ -7,7 +7,7 @@ interface Props {
 
 export default function ChampionStatInMatchedList({ level, stats }: Props) {
   return (
-    <section className='pt-[0.8125rem] text-center'>
+    <section className='pt-[0.8125rem] text-center mr-[1.875rem]'>
       <div className='text-[0.6875rem] text-[#555e5e] -tracking-[0.42px] mb-1.5'>
         레벨 {level}
       </div>
