@@ -1,5 +1,3 @@
-import React from 'react';
-import { RiContactsBookLine } from 'react-icons/ri';
 import {
   getAverage,
   getChampionWinRate,
