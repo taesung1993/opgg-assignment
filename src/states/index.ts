@@ -4,6 +4,7 @@ import SummonerName from './SummonerName';
 import SummonerProfile from './SummonerProfile';
 import MostInfo from './MostInfo';
 import Matches from './Matches';
+import ItemsDetail from './ItemsDetail';
 
 export default {
   SearchKeyword,
@@ -11,5 +12,6 @@ export default {
   SummonerName,
   SummonerProfile,
   MostInfo,
-  Matches
+  Matches,
+  ItemsDetail
 };

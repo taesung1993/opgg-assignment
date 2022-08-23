@@ -88,8 +88,6 @@ export default function SummonerMatches() {
     );
   }
 
-  console.log(filteredGames);
-
   return (
     <section>
       <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>

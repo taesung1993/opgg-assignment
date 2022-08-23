@@ -14,12 +14,16 @@ import {
   sortChampionWinRate
 } from '../../controllers/mostInfoController';
 import { IMatches } from '../../models/interfaces/Matches';
+import { getItemsInQueryFn } from '../../controllers/itemController';
+import { IItemDetail } from '../../models/interfaces/ItemDetail';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
   const setMostInfo = useSetRecoilState(States.MostInfo);
   const setMatches = useSetRecoilState(States.Matches);
+  const setItemsDetail = useSetRecoilState(States.ItemsDetail);
   const summonerName = useRecoilValue(States.SummonerName);
+
   const status = useQueries([
     {
       queryKey: ['summoner', summonerName],
@@ -55,6 +59,24 @@ export default function Home() {
       },
       onError: (err: any) => {
         setMostInfo({
+          status: 'error',
+          data: err.message
+        });
+      },
+      notifyOnChangeProps: ['remove']
+    },
+    {
+      queryKey: 'itemDetail',
+      queryFn: getItemsInQueryFn,
+      refetchOnWindowFocus: false,
+      onSuccess: (data: IItemDetail) => {
+        setItemsDetail({
+          status: 'success',
+          data
+        });
+      },
+      onError: (err: any) => {
+        setItemsDetail({
           status: 'error',
           data: err.message
         });
