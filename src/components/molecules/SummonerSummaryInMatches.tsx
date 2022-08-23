@@ -105,7 +105,7 @@ function Champions({ champions }: { champions: IChampion[] }) {
                   {name}
                 </h6>
                 <div className='flex items-center text-[0.6875rem]'>
-                  <div className='w-[4.1875rem]'>
+                  <div className='w-[4.1875rem] whitespace-nowrap overflow-hidden text-ellipsis'>
                     <span className='text-[#333] font-bold'>
                       {getChampionWinRate(wins, losses)}%&nbsp;
                     </span>
