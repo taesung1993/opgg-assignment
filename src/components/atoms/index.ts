@@ -10,6 +10,7 @@ import ProfileShortInfo from './ProfileShortInfo';
 import SummonerLeagues from './SummonerLeagues';
 import ChampionItem from './ChampionItem';
 import RecentWinRateItem from './RecentWinRateItem';
+import CircularProgress from './CircularProgress';
 
 export default {
   SearchInput,
@@ -23,5 +24,6 @@ export default {
   ProfileShortInfo,
   SummonerLeagues,
   ChampionItem,
-  RecentWinRateItem
+  RecentWinRateItem,
+  CircularProgress
 };

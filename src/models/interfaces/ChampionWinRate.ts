@@ -1,4 +1,4 @@
-export interface IRecentWinRate {
+export interface IChampionWinRate {
   id: number;
   key: string;
   name: string;

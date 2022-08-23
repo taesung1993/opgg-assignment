@@ -2,9 +2,7 @@ import { Dispatch } from 'react';
 
 interface Style {
   tabs?: {
-    width?: string;
-    height?: string;
-    divider?: string;
+    [key: string]: string;
   };
   buttonDefault?: {
     [key: string]: string;
@@ -41,17 +39,32 @@ export default function TabMenus<T extends { id: string; title: string }>({
     lineHeight: '1.25rem'
   };
   const isDividerOption = !!style?.tabs?.divider;
+  const applyButtonAcitve = (id: string, selectedId: string) => {
+    let style = { ...buttonDefault };
+    if (id === selectedId) {
+      style = { ...style, ...buttonActive };
+    }
+
+    return style;
+  };
 
   return (
     <nav
       role='search-nav'
       style={{
         width: style?.tabs?.width || '100%',
-        height: style?.tabs?.height || '2.5rem'
+        height: style?.tabs?.height || '2.5rem',
+        backgroundColor: style?.tabs?.backgroundColor || 'transparent',
+        ...style?.tabs
       }}>
       <ul className='flex items-center w-full h-full'>
         {tabItems.map((tabItem, index) => (
-          <li className='relative flex-1 w-full h-full' key={tabItem.id}>
+          <li
+            className='relative h-full'
+            key={tabItem.id}
+            style={{
+              width: buttonDefault?.width || '100%'
+            }}>
             {isDividerOption && index ? (
               <div
                 className='absolute top-0 left-0 w-[1px] h-full'
@@ -63,7 +76,7 @@ export default function TabMenus<T extends { id: string; title: string }>({
             )}
             <button
               className='w-full h-full flex justify-center items-center'
-              style={selectedId === tabItem.id ? buttonActive : buttonDefault}
+              style={applyButtonAcitve(tabItem.id, selectedId)}
               onClick={() => setSelectedItem(tabItem)}>
               {tabItem.title}
             </button>

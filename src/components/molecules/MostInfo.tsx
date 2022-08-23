@@ -28,7 +28,7 @@ const style = {
   }
 };
 
-export default function WinRates() {
+export default function MostInfo() {
   const tabItems: TabItem[] = [
     {
       id: 'champions',
@@ -40,7 +40,7 @@ export default function WinRates() {
     }
   ];
   const [selectedTabItem, setSelectedTabItem] = useState<TabItem>(tabItems[0]);
-  const gameWinsRate = useRecoilValue(States.GameWinsRate);
+  const mostInfo = useRecoilValue(States.MostInfo);
   return (
     <section className='border bg-[#ededed]  border-[#cdd2d2] rounded-sm'>
       <Atoms.TabMenus
@@ -49,8 +49,8 @@ export default function WinRates() {
         setSelectedItem={setSelectedTabItem}
         style={style}
       />
-      <Molecules.WinRatesContent
-        gameWinsRate={gameWinsRate}
+      <Molecules.MostInfoContent
+        mostInfo={mostInfo}
         selectedTabItem={selectedTabItem}
       />
     </section>

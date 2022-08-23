@@ -1,23 +1,26 @@
+import React from 'react';
 import Templates from '../templates';
 import Organisms from '../organisms';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import States from '../../states';
 import { useQueries } from 'react-query';
-import {
-  getGameWinsRateInQueryFn,
-  getSummonerInQueryFn
-} from '../../controllers/summonerController';
+import { getSummonerInQueryFn } from '../../controllers/summonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
-import { IGameWinsRate } from '../../models/interfaces/GameWinsRate';
-import { IChampion } from '../../models/interfaces/Champion';
-import { IRecentWinRate } from '../../models/interfaces/RecentWinRate';
+import { IMostInfo } from '../../models/interfaces/MostInfo';
+import { getMatchesInQueryFn } from '../../controllers/matchesController';
+import {
+  getMostInfo,
+  sortChampions,
+  sortChampionWinRate
+} from '../../controllers/mostInfoController';
+import { IMatches } from '../../models/interfaces/Matches';
 
 export default function Home() {
   const setProfile = useSetRecoilState(States.SummonerProfile);
-  const setGameWinsRate = useSetRecoilState(States.GameWinsRate);
+  const setMostInfo = useSetRecoilState(States.MostInfo);
+  const setMatches = useSetRecoilState(States.Matches);
   const summonerName = useRecoilValue(States.SummonerName);
-
-  useQueries([
+  const status = useQueries([
     {
       queryKey: ['summoner', summonerName],
       queryFn: getSummonerInQueryFn,
@@ -33,28 +36,48 @@ export default function Home() {
           status: 'error',
           data: err.message
         });
-      }
+      },
+      notifyOnChangeProps: ['remove']
     },
     {
-      queryKey: ['gameWinsRate', summonerName],
-      queryFn: getGameWinsRateInQueryFn,
+      queryKey: [summonerName, 'mostInfo'],
+      queryFn: getMostInfo,
       refetchOnWindowFocus: false,
-      onSuccess: (data: IGameWinsRate) => {
-        setGameWinsRate({
+      onSuccess: (data: IMostInfo) => {
+        setMostInfo({
           status: 'success',
           data: {
             ...data,
             champions: data.champions.sort(sortChampions),
-            recentWinRate: data.recentWinRate.sort(sortRecentWinRate)
+            recentWinRate: data.recentWinRate.sort(sortChampionWinRate)
           }
         });
       },
       onError: (err: any) => {
-        setGameWinsRate({
+        setMostInfo({
           status: 'error',
           data: err.message
         });
-      }
+      },
+      notifyOnChangeProps: ['remove']
+    },
+    {
+      queryKey: [summonerName, 'matches'],
+      queryFn: getMatchesInQueryFn,
+      refetchOnWindowFocus: false,
+      onSuccess: (data: IMatches) => {
+        setMatches({
+          status: 'success',
+          data
+        });
+      },
+      onError: (err: any) => {
+        setMatches({
+          status: 'error',
+          data: err.message
+        });
+      },
+      notifyOnChangeProps: ['data', 'error']
     }
   ]);
 
@@ -63,36 +86,4 @@ export default function Home() {
       <Organisms.Main />
     </Templates.Nested>
   );
-}
-
-function sortChampions(championA: IChampion, championB: IChampion): number {
-  const { games: gamesA } = championA;
-  const { games: gamesB } = championB;
-
-  if (gamesA > gamesB) {
-    return -1;
-  }
-  if (gamesA === gamesB) {
-    return 0;
-  }
-  return 1;
-}
-
-function sortRecentWinRate(
-  recentWinRateA: IRecentWinRate,
-  recentWinRateB: IRecentWinRate
-) {
-  const { wins: winsA, losses: lossesA } = recentWinRateA;
-  const { wins: winsB, losses: lossesB } = recentWinRateB;
-
-  const totalA = winsA + lossesA;
-  const totalB = winsB + lossesB;
-
-  if (totalA > totalB) {
-    return -1;
-  }
-  if (totalA === totalB) {
-    return 0;
-  }
-  return 1;
 }

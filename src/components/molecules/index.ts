@@ -1,19 +1,23 @@
 import Search from './Search';
 import SearchBox from './SearchBox';
-import Profile from './Profile';
+import SummonerProfile from './SummonerProfile';
 import SummonerInfo from './SummonerInfo';
-import WinRates from './WinRates';
-import WinRatesContent from './WinRatesContent';
-import Champions from './Champions';
-import RecentWinRates from './RecentWinRates';
+import MostInfo from './MostInfo';
+import MostInfoContent from './MostInfoContent';
+import MostChampion from './MostChampion';
+import MostChampionWinRate from './MostChampionWinRate';
+import SummonerMatches from './SummonerMatches';
+import SummonerSummaryInMatches from './SummonerSummaryInMatches';
 
 export default {
   Search,
   SearchBox,
-  Profile,
+  SummonerProfile,
   SummonerInfo,
-  WinRates,
-  WinRatesContent,
-  Champions,
-  RecentWinRates
+  MostInfo,
+  MostInfoContent,
+  MostChampion,
+  MostChampionWinRate,
+  SummonerMatches,
+  SummonerSummaryInMatches
 };

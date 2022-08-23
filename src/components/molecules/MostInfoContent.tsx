@@ -1,22 +1,19 @@
 import Molecules from './index';
 import { AsyncData } from '../../models/interfaces/AsyncData';
-import { IGameWinsRate } from '../../models/interfaces/GameWinsRate';
+import { IMostInfo } from '../../models/interfaces/MostInfo';
 
-type GameWinsRate = AsyncData<IGameWinsRate>;
+type MostInfo = AsyncData<IMostInfo>;
 
 interface Props {
-  gameWinsRate: GameWinsRate;
+  mostInfo: MostInfo;
   selectedTabItem: {
     id: string;
     title: string;
   };
 }
 
-export default function WinRatesContent({
-  gameWinsRate,
-  selectedTabItem
-}: Props) {
-  const { status, data } = gameWinsRate;
+export default function MostInfoContent({ mostInfo, selectedTabItem }: Props) {
+  const { status, data } = mostInfo;
 
   if (status === 'loading') {
     return (
@@ -47,9 +44,9 @@ export default function WinRatesContent({
   return (
     <section>
       {selectedTabId === 'champions' ? (
-        <Molecules.Champions champions={champions} />
+        <Molecules.MostChampion champions={champions} />
       ) : (
-        <Molecules.RecentWinRates recentWinRates={recentWinRate} />
+        <Molecules.MostChampionWinRate championWinRates={recentWinRate} />
       )}
     </section>
   );
