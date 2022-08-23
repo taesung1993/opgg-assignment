@@ -88,20 +88,26 @@ export default function SummonerMatches() {
     );
   }
 
+  console.log(filteredGames);
+
   return (
-    <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>
-      <Atoms.TabMenus
-        tabItems={tabItems}
-        selectedItem={selectedTabItem}
-        setSelectedItem={setSelectedTabItem}
-        style={styleOfTabItems}
-      />
-      <Molecules.SummonerSummaryInMatches
-        positions={data.positions}
-        summary={data.summary}
-        champions={data.champions}
-      />
-      <Molecules.MatchedList />
+    <section>
+      <section className='mt-2.5 bg-[#ededed] border border-[#cdd2d2]'>
+        <Atoms.TabMenus
+          tabItems={tabItems}
+          selectedItem={selectedTabItem}
+          setSelectedItem={setSelectedTabItem}
+          style={styleOfTabItems}
+        />
+        <Molecules.SummonerSummaryInMatches
+          positions={data.positions}
+          summary={data.summary}
+          champions={data.champions}
+        />
+      </section>
+      <section className='mt-4'>
+        <Molecules.MatchedList games={filteredGames} />
+      </section>
     </section>
   );
 }

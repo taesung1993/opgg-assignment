@@ -11,6 +11,10 @@ import SummonerLeagues from './SummonerLeagues';
 import ChampionItem from './ChampionItem';
 import RecentWinRateItem from './RecentWinRateItem';
 import CircularProgress from './CircularProgress';
+import ShortMatchResult from './ShortMatchResult';
+import ChampionInMatchedList from './ChampionInMatchedList';
+import ChampionStatInMatchedList from './ChampionStatInMatchedList';
+import ChampionKdaInMatchedList from './ChampionKdaInMatchedList';
 
 export default {
   SearchInput,
@@ -25,5 +29,9 @@ export default {
   SummonerLeagues,
   ChampionItem,
   RecentWinRateItem,
-  CircularProgress
+  CircularProgress,
+  ShortMatchResult,
+  ChampionInMatchedList,
+  ChampionStatInMatchedList,
+  ChampionKdaInMatchedList
 };
