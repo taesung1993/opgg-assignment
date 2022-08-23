@@ -18,7 +18,8 @@ export default function MatchedList({ games }: Props) {
             champion,
             spells,
             peak,
-            stats
+            stats,
+            items
           },
           index
         ) => (
@@ -49,6 +50,11 @@ export default function MatchedList({ games }: Props) {
               <Atoms.ChampionStatInMatchedList
                 level={champion.level || 0}
                 stats={stats}
+              />
+              <Atoms.ItemUsedInMatch
+                isWin={isWin}
+                items={items}
+                controlWards={stats.ward.visionWardsBought}
               />
             </section>
             <section
