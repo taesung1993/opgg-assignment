@@ -6,12 +6,12 @@ interface Props {
 
 export default function ProfileTiers({ previousTiers }: Props) {
   return (
-    <ul className='flex items-center pl-2.5 mb-1.5'>
+    <ul className='flex items-center pl-[0.15625rem] mb-1.5'>
       {previousTiers.map((tier) => (
         <li
           key={`s-${tier.season}`}
           role='profile-tier'
-          className='group bg-greyish-three h-5 px-[0.3125rem] pt-1 pb-[0.1875rem] border border-border text-xs text-[#657070] flex items-center justify-center rounded-sm relative cursor-pointer mx-[0.4375rem]'>
+          className='group bg-greyish-three h-5 px-[0.3125rem] pt-1 pb-[0.1875rem] border border-border text-xs text-[#657070] flex items-center justify-center rounded-sm relative cursor-pointer mx-[0.4375rem] font-sans'>
           <span className='font-bold'>S{tier.season}</span>
           &nbsp;
           <span>{tier.tier}</span>

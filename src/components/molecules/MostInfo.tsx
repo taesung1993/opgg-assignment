@@ -18,7 +18,8 @@ const style = {
     backgroundColor: '#f2f2f2',
     color: '#879292',
     borderBottom: '1px solid #cdd2d2',
-    fontSize: '0.75rem'
+    fontSize: '0.75rem',
+    fontFamily: '"AppleSDGothicNeo", "Noto Sans KR", sans-serif'
   },
   buttonActive: {
     backgroundColor: '#ededed',

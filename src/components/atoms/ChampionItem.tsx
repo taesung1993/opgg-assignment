@@ -1,4 +1,9 @@
-import { useMemo } from 'react';
+import {
+  getAverage,
+  getChampionWinRate,
+  getColorInAverage,
+  getColorInWinsRate
+} from '../../controllers/matchesController';
 import { IChampion } from '../../models/interfaces/Champion';
 
 interface Props {
@@ -18,7 +23,7 @@ export default function ChampionItem({ champion }: Props) {
         />
       </div>
       <div className='w-[4.6rem]'>
-        <h6 className='text-[#5e5e5e] text-[0.8125rem] mb-[0.1875rem] font-bold whitespace-nowrap text-ellipsis overflow-hidden'>
+        <h6 className='text-[#5e5e5e] text-[0.8125rem] leading-[1] mb-0 font-bold whitespace-nowrap text-ellipsis overflow-hidden font-apple'>
           {champion.name}
         </h6>
         <div className='text-[#879292] text-[0.6875rem]'>CS {champion.cs}</div>
@@ -54,33 +59,19 @@ function Average({
   assists: number;
   deaths: number;
 }) {
-  const getAverage = (kills: number, deaths: number, assists: number) => {
-    return +((kills + assists) / deaths).toFixed(2);
-  };
+  // const getAverage = (kills: number, deaths: number, assists: number) => {
+  //   return +((kills + assists) / deaths).toFixed(2);
+  // };
   const average = getAverage(kills, deaths, assists);
-  const getColor = (value: number) => {
-    if (value > 5) {
-      return '#e19205';
-    }
-
-    if (value > 4) {
-      return '#1f8ecd';
-    }
-
-    if (value > 3) {
-      return '#2daf7f';
-    }
-
-    return '#879292';
-  };
+  const color = getColorInAverage(+average);
 
   return (
     <div
-      className='text-[0.8125rem] mb-[0.1875rem] font-bold whitespace-nowrap'
+      className='text-[0.8125rem] leading-[1] mb-[0.1875rem] font-bold whitespace-nowrap'
       style={{
-        color: getColor(average)
+        color
       }}>
-      {average} : 1 평점
+      {average} : 1 <span className='font-apple'>평점</span>
     </div>
   );
 }
@@ -110,21 +101,13 @@ function KDA({
 }
 
 function WinsRate({ wins, games }: { wins: number; games: number }) {
-  const winsRate = useMemo(() => {
-    return Math.floor((wins / games) * 100);
-  }, [games, wins]);
-  const getColor = (value: number) => {
-    if (value > 60) {
-      return '#c6443e';
-    }
-
-    return '#5e5e5e';
-  };
+  const winsRate = getChampionWinRate(wins, games - wins);
+  const color = getColorInWinsRate(winsRate);
   return (
     <div
-      className='text-[0.8125rem] mb-[0.1875rem] font-bold mb-1'
+      className='text-[0.8125rem] leading-[1] mb-[0.1875rem] font-bold'
       style={{
-        color: getColor(winsRate)
+        color
       }}>
       {winsRate}%
     </div>

@@ -75,3 +75,11 @@ export const getColorInAverage = (average: number) => {
 
   return '#879292';
 };
+
+export const getColorInWinsRate = (winsRate: number) => {
+  if (winsRate > 60) {
+    return '#c6443e';
+  }
+
+  return '#5e5e5e';
+};

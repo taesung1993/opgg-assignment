@@ -38,7 +38,7 @@ export default function SummonerProfile() {
   }
 
   return (
-    <section className='border-b border-b-[#d8d8d8] pb-3.5 pt-[0.9375rem]'>
+    <section className='border-b border-b-[#d8d8d8] pb-3 pt-[0.9375rem]'>
       <section className='w-full max-w-opgg mx-auto px-4'>
         <Content summoner={data} />
       </section>

@@ -27,21 +27,21 @@ export default function SummonerLeagues({
           <img src={solRank.tierRank.imageUrl} alt='solo rank' />
         </div>
         <div>
-          <div className='h-[0.8125rem] text-[0.6875rem] text-[#879292] mb-1'>
+          <div className='h-[0.8125rem] text-[0.6875rem] text-[#879292] mb-1 font-apple'>
             솔로 랭크
           </div>
           <div
-            className='text-xs text-[#353a3a] h-[0.9375rem] mb-1 leading-[15px]'
+            className='text-xs text-[#353a3a] h-[0.9375rem] mb-0 leading-[0.9375rem] font-apple'
             role='solRank-total-games'>
             <strong>탑</strong> (총{' '}
             {(solRank.wins + solRank.losses).toLocaleString()} 게임)
           </div>
           <div
-            className='text-[0.9375rem] text-[#1f8ecd] font-bold mb-1.5'
+            className='text-[0.9375rem] text-[#1f8ecd] font-bold mb-0.5'
             role='solRank-tier-division'>
             {solRank.tierRank.tierDivision}
           </div>
-          <div className='flex items-center mb-[0.1875rem]'>
+          <div className='flex items-center mb-0'>
             <span
               className='font-bold text-xs text-[#555e5e]'
               role='solRank-tier-lp'>
@@ -54,7 +54,8 @@ export default function SummonerLeagues({
           <div
             className='h-[0.9375rem] text-xs text-[#879292]'
             role='solRank-wins-rate'>
-            승률 {calculateWinRate(solRank.wins, solRank.losses)}%
+            <span className='font-apple'>승률&nbsp;</span>
+            <span>{calculateWinRate(solRank.wins, solRank.losses)}%</span>
           </div>
         </div>
       </li>
@@ -87,7 +88,8 @@ export default function SummonerLeagues({
           <div
             className='h-[0.9375rem] text-xs text-[#879292]'
             role='freeRank-wins-rate'>
-            승률 {calculateWinRate(freeRank.wins, freeRank.losses)}%
+            <span className='font-apple'>승률&nbsp;</span>
+            <span>{calculateWinRate(freeRank.wins, freeRank.losses)}%</span>
           </div>
         </div>
       </li>
