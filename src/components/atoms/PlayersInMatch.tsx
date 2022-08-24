@@ -14,7 +14,6 @@ export default function PlayersInMatch({ gameId }: Props) {
     a: [],
     b: []
   });
-  console.log(summonerName);
 
   const getTeamInMatch = useCallback(async () => {
     try {

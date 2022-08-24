@@ -2,6 +2,7 @@ import axios from 'axios';
 import { QueryFunctionContext } from 'react-query';
 import { IGame } from '../models/interfaces/Game';
 import { IMatches } from '../models/interfaces/Matches';
+import { ISummary } from '../models/interfaces/Summary';
 
 export const getMatchesInQueryFn = async ({
   queryKey
@@ -82,4 +83,31 @@ export const getColorInWinsRate = (winsRate: number) => {
   }
 
   return '#5e5e5e';
+};
+
+export const filteredSummaryPerGames = (games: IGame[]): ISummary => {
+  return games.reduce(
+    (result: ISummary, game) => {
+      const { isWin, stats } = game;
+
+      if (isWin) {
+        result['wins'] += 1;
+      } else {
+        result['losses'] += 1;
+      }
+
+      result['kills'] += stats.general.kill;
+      result['deaths'] += stats.general.death;
+      result['assists'] += stats.general.assist;
+
+      return result;
+    },
+    {
+      wins: 0,
+      losses: 0,
+      kills: 0,
+      deaths: 0,
+      assists: 0
+    }
+  );
 };
