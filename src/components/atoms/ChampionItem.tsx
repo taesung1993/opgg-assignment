@@ -28,7 +28,7 @@ export default function ChampionItem({ champion }: Props) {
         </h6>
         <div className='text-[#879292] text-[0.6875rem]'>CS {champion.cs}</div>
       </div>
-      <div className='flex-1 text-center mr-6'>
+      <div className='flex-1 text-right mr-6'>
         <Average
           kills={champion.kills}
           deaths={champion.deaths}
