@@ -7,23 +7,32 @@ import {
 } from '../../controllers/localSummonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
 import { RiCloseFill } from 'react-icons/ri';
-import { useCallback, useMemo, useState, MouseEvent } from 'react';
+import { useCallback, useMemo, useState, MouseEvent, Dispatch } from 'react';
 import { useSetRecoilState } from 'recoil';
 import States from '../../states';
 
 interface Props {
   type: 'latest' | 'liked';
+  setShowSearchContainer: Dispatch<boolean>;
 }
 
-export default function SeachContent({ type }: Props) {
+export default function SeachContent({ type, setShowSearchContainer }: Props) {
   return (
     <section className='flex flex-col justify-center items-center p-5'>
-      {type === 'latest' ? <LatestList /> : <LikedList />}
+      {type === 'latest' ? (
+        <LatestList setShowSearchContainer={setShowSearchContainer} />
+      ) : (
+        <LikedList setShowSearchContainer={setShowSearchContainer} />
+      )}
     </section>
   );
 }
 
-function LatestList() {
+function LatestList({
+  setShowSearchContainer
+}: {
+  setShowSearchContainer: Dispatch<boolean>;
+}) {
   const [forceUpdate, setForceUpdate] = useState(false);
   const setSummonerName = useSetRecoilState(States.SummonerName);
 
@@ -37,6 +46,7 @@ function LatestList() {
     const name = event.currentTarget.textContent;
     if (name) {
       setSummonerName(name);
+      setShowSearchContainer(false);
     }
   }, []);
 
@@ -115,7 +125,11 @@ function LatestList() {
   );
 }
 
-function LikedList() {
+function LikedList({
+  setShowSearchContainer
+}: {
+  setShowSearchContainer: Dispatch<boolean>;
+}) {
   const [forceUpdate, setForceUpdate] = useState(false);
   const setSummonerName = useSetRecoilState(States.SummonerName);
 
@@ -130,6 +144,7 @@ function LikedList() {
     const name = event.currentTarget.textContent;
     if (name) {
       setSummonerName(name);
+      setShowSearchContainer(false);
     }
   }, []);
 

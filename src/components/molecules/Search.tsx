@@ -35,7 +35,7 @@ export default function Search() {
     <div className='search-container w-[16.25rem] h-8 flex items-center bg-white py-2 px-[0.875rem] relative'>
       <Atoms.SearchInput setShowSearchContainer={setShowSearchContainer} />
       <Atoms.SearchButton />
-      <SearchBox />
+      <SearchBox setShowSearchContainer={setShowSearchContainer} />
     </div>
   );
 }
