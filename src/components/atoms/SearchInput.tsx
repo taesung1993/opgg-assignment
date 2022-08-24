@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function SearchInput({ setShowSearchContainer }: Props) {
-  const [_, setKeyword] = useRecoilState(States.SearchKeyword);
+  const [keyword, setKeyword] = useRecoilState(States.SearchKeyword);
   const onSearch = useCallback(async (event: ChangeEvent) => {
     let waiting = false;
     return (() => {
@@ -34,6 +34,7 @@ export default function SearchInput({ setShowSearchContainer }: Props) {
       className='w-full h-full text-xs font-apple focus:outline-none'
       onFocus={onFocus}
       onChange={onSearch}
+      value={keyword}
     />
   );
 }
