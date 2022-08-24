@@ -1,8 +1,12 @@
 // import Atoms from '../atoms';
 import { ISearchNavItem } from '../../models/interfaces/SearchNavItem';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Atoms from '../atoms';
-import { useRecoilValue, useRecoilValueLoadable } from 'recoil';
+import {
+  useRecoilValue,
+  useRecoilValueLoadable,
+  useSetRecoilState
+} from 'recoil';
 import States from '../../states';
 
 const navItems: ISearchNavItem[] = [
@@ -22,6 +26,11 @@ export default function SearchBox() {
   const [selectedItem, setSelectedItem] = useState<ISearchNavItem>(navItems[0]);
   const keyword = useRecoilValue(States.SearchKeyword);
   const { contents } = useRecoilValueLoadable(States.SearchedSummoner);
+  const setSummoner = useSetRecoilState(States.Summoner);
+
+  useEffect(() => {
+    setSummoner(contents);
+  }, [contents]);
 
   const Content = keyword ? (
     <Atoms.SearchResult summoners={[contents]} />
