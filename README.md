@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# OPGG ASSIGNMENT PROJECT
+### 설명
+- Front-end 개발자 채용 과제 Repository 입니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 이용한 주요 라이브러리
+- [x] React
+- [x] Typescript
+- [x] Eslint 
+- [x] Jest, Testing library(약간의 Unit Test 사용) 
+- [x] tailwindCss
+- [x] react query
+- [x] recoil
+- [x] husky  
 
-## Available Scripts
+### 명령어
+- ```npm run start``` 명령어를 이용하여 프로젝트를 실행시킬 수 있습니다.
+- ```npm run test``` 명령어를 이용하여 Unit Test 결과를 확인할 수 있습니다.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 특이사항
+- 비록 개인과제였지만, 조직은 개발 팀을 구성하여 운영하기 때문에 협업의 상황을 맞추기 위해 [프로젝트](https://github.com/users/taesung1993/projects/1)로 
+이슈를 생성하여 작업을 진행하였습니다.
+- 로컬에서 main으로 Push를 막기 위해 Branch Protection Rule을 사용하였습니다.
+- husky를 이용하여 로컬에서 코드 포맷과 테스트를 통과해야 Commit이 되도록 하였습니다
+- Pull Request 시에 [Github Action](https://github.com/taesung1993/opgg-assignment/actions) 에서 코드 포맷과 테스트를 실행실 수 있도록 workflow를 작성하였습니다.
+- 서버에서 오는 데이터, UI/UX를 위해 사용하는 전역 데이터를 각각 나누어서 관리하기 위해 React-query와 Recoil을 같이 사용하였습니다.
+- 능숙하지는 않지만, 최근에 
+Udemy라는 강의 사이트에서 TDD 강의를 수강했기 때문에 이를 
+이용해보고자 영광스럽게도 첫 실전에 Jest 및 Testing library를 이용하여 
+약간의 Unit 테스트를 작성해 보았습니다.
+- 컴포넌트 디렉터리 구조는 [Atomic Design Pattern](https://zoomkoding.github.io/%EB%94%94%EC%9E%90%EC%9D%B8%ED%8C%A8%ED%84%B4/%EC%9A%B0%EC%95%84%ED%95%9C%ED%85%8C%ED%81%AC%EC%BA%A0%ED%94%84/2020/07/09/atomic-design-pattern.html)을 참조하였습니다.
