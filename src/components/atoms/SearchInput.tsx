@@ -1,5 +1,6 @@
-import { useCallback, Dispatch, ChangeEvent } from 'react';
-import { useRecoilState } from 'recoil';
+import { useCallback, Dispatch, ChangeEvent, KeyboardEvent } from 'react';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { recordSummonerInLocal } from '../../controllers/localSummonerController';
 import States from '../../states';
 
 interface Props {
@@ -7,7 +8,10 @@ interface Props {
 }
 
 export default function SearchInput({ setShowSearchContainer }: Props) {
-  const [_, setKeyword] = useRecoilState(States.SearchKeyword);
+  const [keyword, setKeyword] = useRecoilState(States.SearchKeyword);
+  const summoner = useRecoilValue(States.Summoner);
+  const setSummonerName = useSetRecoilState(States.SummonerName);
+
   const onSearch = useCallback(async (event: ChangeEvent) => {
     let waiting = false;
     return (() => {
@@ -23,6 +27,33 @@ export default function SearchInput({ setShowSearchContainer }: Props) {
     })();
   }, []);
 
+  const onKeyup = useCallback(
+    (event: KeyboardEvent) => {
+      let waiting = false;
+
+      return (() => {
+        if (!waiting) {
+          waiting = true;
+          const target = event.target as HTMLInputElement;
+          if (target.value) {
+            if (event.key === 'Enter') {
+              if (summoner) {
+                recordSummonerInLocal(summoner, 'latest');
+                setSummonerName(summoner.name);
+                setKeyword('');
+                setShowSearchContainer(false);
+              }
+            }
+          }
+          setTimeout(() => {
+            waiting = false;
+          }, 250);
+        }
+      })();
+    },
+    [summoner]
+  );
+
   const onFocus = useCallback(() => {
     setShowSearchContainer(true);
   }, []);
@@ -34,6 +65,8 @@ export default function SearchInput({ setShowSearchContainer }: Props) {
       className='w-full h-full text-xs font-apple focus:outline-none'
       onFocus={onFocus}
       onChange={onSearch}
+      onKeyUp={onKeyup}
+      value={keyword}
     />
   );
 }

@@ -54,7 +54,7 @@ export default function ChampionInMatchedList({
           </div>
         </div>
       </div>
-      <div className='mt-[0.5625rem] text-[0.6875rem] -tracking-[0.42px] text-[#555] text-center'>
+      <div className='mt-[0.5625rem] text-[0.6875rem] -tracking-[0.42px] text-[#555] text-center font-apple'>
         {exportNameFromImageUrl(imageUrl)}
       </div>
     </section>

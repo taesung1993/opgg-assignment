@@ -42,7 +42,7 @@ export default function ChampionKdaInMatchedList({ stats }: Props) {
   }, [stats]);
   return (
     <section className='flex flex-col justify-center items-center gap-1.5 w-[5.8125rem] mr-[2.0625rem]'>
-      <div>
+      <div className='leading-[1]'>
         <span className='text-[0.9375rem] -tracking-[0.58px] text-[#555e5e] font-bold'>
           {stats.general.kill}
         </span>
@@ -63,14 +63,16 @@ export default function ChampionKdaInMatchedList({ stats }: Props) {
         <span className='text-[#333333] -trancking-[0.42px] font-bold'>
           {stats.general.kdaString}
         </span>
-        <span className='text-[#555e5e] -trancking-[0.42px]'>&nbsp;평점</span>
+        <span className='text-[#555e5e] -trancking-[0.42px] font-apple font-bold'>
+          &nbsp;평점
+        </span>
       </div>
       <div>
         <ul className='flex items-center gap-1'>
           {badges.map((badge, index) => (
             <li
               key={`badge-${index}`}
-              className='py-[0.1875rem] px-[0.3125rem] h-[1.125rem] rounded-full text-[0.625rem] leading-[0.625rem] -tracking-[0.38px] text-[#fff]'
+              className='py-[0.1875rem] px-[0.3125rem] h-[1.125rem] rounded-full text-[0.625rem] leading-[0.625rem] -tracking-[0.38px] text-[#fff] font-apple'
               style={{
                 border: `1px solid ${badge.borderColor}`,
                 backgroundColor: badge.color

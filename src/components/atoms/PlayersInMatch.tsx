@@ -14,7 +14,6 @@ export default function PlayersInMatch({ gameId }: Props) {
     a: [],
     b: []
   });
-  console.log(summonerName);
 
   const getTeamInMatch = useCallback(async () => {
     try {
@@ -61,7 +60,7 @@ export default function PlayersInMatch({ gameId }: Props) {
               alt={`${player.summonerName}'s champion`}
             />
             <div
-              className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px]'
+              className='text-[0.6875rem] whitespace-nowrap overflow-hidden text-ellipsis -tracking-[0.42px] font-apple'
               style={{
                 color: summonerName === player.summonerName ? '#000' : '#555'
               }}>

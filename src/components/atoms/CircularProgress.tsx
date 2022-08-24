@@ -8,6 +8,7 @@ export default function CircularProgress({ percent }: Props) {
   return (
     <section className='w-[5.625rem] h-[5.625rem]'>
       <CircularProgressbar
+        className='font-bold'
         value={percent}
         text={`${percent}%`}
         strokeWidth={13}

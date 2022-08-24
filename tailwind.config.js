@@ -28,7 +28,8 @@ module.exports = {
     },
     fontFamily: {
       apple: ['AppleSDGothicNeo', 'Noto Sans KR', 'sans-serif'],
-      sans: ['Helvetica', 'Arial', 'sans-serif']
+      sans: ['Helvetica', 'Arial', 'sans-serif'],
+      nanum: ['NanumBarunGothic', 'sans-serif']
     }
   },
   plugins: []

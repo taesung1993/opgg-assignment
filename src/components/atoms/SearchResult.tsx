@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { recordSummonerInLocal } from '../../controllers/localSummonerController';
 import { ISummoner } from '../../models/interfaces/Summoner';
 import States from '../../states';
@@ -10,11 +10,12 @@ interface Props {
 
 export default function SearchResult({ summoners }: Props) {
   const data = summoners || [];
-  const keyword = useRecoilValue(States.SearchKeyword);
+  const [keyword, setKeyword] = useRecoilState(States.SearchKeyword);
   const setSummonerName = useSetRecoilState(States.SummonerName);
   const onClick = useCallback((summoner: ISummoner) => {
     recordSummonerInLocal(summoner, 'latest');
     setSummonerName(summoner.name);
+    setKeyword('');
   }, []);
 
   return (

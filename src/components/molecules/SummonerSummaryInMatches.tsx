@@ -1,11 +1,14 @@
+import { useMemo } from 'react';
 import {
+  filteredSummaryPerGames,
   getAverage,
   getChampionWinRate,
   getColorInAverage,
-  getKda,
+  getColorInWinsRate,
   getMatchedRecords
 } from '../../controllers/matchesController';
 import { IChampion } from '../../models/interfaces/Champion';
+import { IGame } from '../../models/interfaces/Game';
 import { IPosition } from '../../models/interfaces/Position';
 import { ISummary } from '../../models/interfaces/Summary';
 import Atoms from '../atoms';
@@ -13,21 +16,24 @@ import Icons from '../icons';
 
 interface Props {
   positions: IPosition[];
-  summary: ISummary;
   champions: IChampion[];
+  games: IGame[];
 }
 
 export default function SummonerSummaryInMatches({
   positions,
-  summary,
-  champions
+  champions,
+  games
 }: Props) {
+  const filteredSummary: ISummary = useMemo(() => {
+    return filteredSummaryPerGames(games);
+  }, [games]);
   return (
     <section className='flex items-center border-t border-t-[#cdd2d2]'>
       <section
         className='pl-6 pt-4 pr-[1.1875rem] w-[17.5rem] h-[9.875rem] border-r border-[#cdd2d2]'
         role='sumary-info'>
-        <Summary summary={summary} />
+        <Summary summary={filteredSummary} />
       </section>
       <section className='w-[14.25rem] py-4 pl-4 pr-[1.125rem] h-[9.875rem] border-r border-[#cdd2d2] flex flex-col gap-3'>
         <Champions champions={champions} />
@@ -45,27 +51,47 @@ function Summary({
   summary: ISummary;
 }) {
   const championWinRate = getChampionWinRate(wins, losses);
-  const kda = getKda(kills, deaths, assists);
   const average = getAverage(kills, deaths, assists);
   const averageColor = getColorInAverage(+average);
   const matchedRecords = getMatchedRecords(wins, losses);
+  const totalGames = wins + losses;
 
   return (
     <>
       <div className='text-xs text-[#666] pl-[0.5625rem] mb-[0.875rem]'>
         {matchedRecords}
       </div>
-      <div className='flex items-center gap-[2.1875rem]'>
+      <div className='flex gap-[2.1875rem]'>
         <Atoms.CircularProgress percent={championWinRate} />
         <div>
-          <div className='text-[0.6875rem] font-bold mb-1.5'>{kda}</div>
-          <div className='text-base'>
-            <span
+          <div
+            className='text-[0.6875rem] font-bold text-right'
+            role='kda-in-summary-in-matches'>
+            <span className='text-[#333333]'>
+              {(kills / totalGames).toFixed(1)}
+            </span>
+            <span className='text-[#999]'>&nbsp;/&nbsp;</span>
+            <span className='text-[#c6443e]'>
+              {(deaths / totalGames).toFixed(1)}
+            </span>
+            <span className='text-[#999]'>&nbsp;/&nbsp;</span>
+            <span className='text-[#333333]'>
+              {(assists / totalGames).toFixed(1)}
+            </span>
+          </div>
+          <div className='text-[1rem] text-right'>
+            <div
+              className='flex items-center'
               style={{
                 color: averageColor
-              }}>
-              {average}:1
-            </span>
+              }}
+              role='average-in-summary-in-matches'>
+              <span className='font-bold'>{average}</span>
+              <span>:1&nbsp;</span>
+              <span className='text-[#c6443e] leading-[11px] mb-[2px]'>
+                ({championWinRate}%)
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -96,12 +122,18 @@ function Champions({ champions }: { champions: IChampion[] }) {
                 />
               </div>
               <div className='flex-1'>
-                <h6 className='w-[5.25rem] text-ellipsis text-sm whitespace-nowrap overflow-hidden'>
+                <h6 className='w-[5.25rem] text-ellipsis font-nanum text-sm whitespace-nowrap overflow-hidden'>
                   {name}
                 </h6>
                 <div className='flex items-center text-[0.6875rem]'>
                   <div className='w-[4.1875rem] whitespace-nowrap overflow-hidden text-ellipsis'>
-                    <span className='text-[#333] font-bold'>
+                    <span
+                      className='font-bold'
+                      style={{
+                        color: getColorInWinsRate(
+                          +getChampionWinRate(wins, losses)
+                        )
+                      }}>
                       {getChampionWinRate(wins, losses)}%&nbsp;
                     </span>
                     <span className='text-[#333]'>
@@ -134,7 +166,7 @@ function Champions({ champions }: { champions: IChampion[] }) {
             <div className='mr-2'>
               <Icons.NoChampion />
             </div>
-            <div className='text-[0.6875rem] text-[#999]'>
+            <div className='font-nanum text-[0.6875rem] text-[#999]'>
               챔피언 정보가 없습니다.
             </div>
           </li>

@@ -1,5 +1,6 @@
 import { screen, render, within } from '@testing-library/react';
 import {
+  filteredSummaryPerGames,
   getAverage,
   getChampionWinRate,
   getColorInAverage,
@@ -7,6 +8,7 @@ import {
 } from '../../../controllers/matchesController';
 import { MOCK_MATCHES } from '../../../mocks/constants';
 import { IChampion } from '../../../models/interfaces/Champion';
+import { IGame } from '../../../models/interfaces/Game';
 import { IPosition } from '../../../models/interfaces/Position';
 import { ISummary } from '../../../models/interfaces/Summary';
 import Molecules from '../index';
@@ -14,6 +16,7 @@ import Molecules from '../index';
 const positions = MOCK_MATCHES['positions'] as IPosition[];
 const summary = MOCK_MATCHES['summary'] as ISummary;
 const champions = MOCK_MATCHES['champions'] as IChampion[];
+const games = MOCK_MATCHES['games'] as IGame[];
 const convertHexToRGBA = (hexCode: string) => {
   let hex = hexCode.replace('#', '');
 
@@ -53,34 +56,35 @@ describe('<SummonerSummaryInMatches/>', () => {
     render(
       <Molecules.SummonerSummaryInMatches
         positions={positions}
-        summary={summary}
         champions={champions}
+        games={games}
       />
     );
 
     const summarySection = screen.getByRole('sumary-info');
     expect(summarySection).toBeInTheDocument();
-    const { kills, deaths, assists } = summary;
-
-    const kda = getKda(kills, deaths, assists);
-    expect(within(summarySection).getByText(kda)).toBeInTheDocument();
+    const { kills, deaths, assists } = filteredSummaryPerGames(games);
+    const kda = `${(kills / games.length).toFixed(1)} / ${(
+      deaths / games.length
+    ).toFixed(1)} / ${(assists / games.length).toFixed(1)}`;
+    expect(
+      within(summarySection).getByRole('kda-in-summary-in-matches')
+    ).toHaveTextContent(kda);
 
     const average = getAverage(kills, deaths, assists);
-    const color = convertHexToRGBA(getColorInAverage(+average));
-    expect(
-      within(summarySection).getByText(`${average}:1`)
-    ).toBeInTheDocument();
-    expect(within(summarySection).getByText(`${average}:1`).style.color).toBe(
-      color
+    const averageEl = within(summarySection).getByRole(
+      'average-in-summary-in-matches'
     );
+    expect(averageEl).toBeInTheDocument();
+    expect(averageEl).toHaveTextContent(`${average}:1`);
   });
 
   it('챔피언 정보가 잘 시각화되어 있는지 확인합니다.', () => {
     render(
       <Molecules.SummonerSummaryInMatches
         positions={positions}
-        summary={summary}
         champions={champions}
+        games={games}
       />
     );
 
@@ -130,8 +134,8 @@ describe('<SummonerSummaryInMatches/>', () => {
     render(
       <Molecules.SummonerSummaryInMatches
         positions={positions}
-        summary={summary}
         champions={champions}
+        games={games}
       />
     );
 

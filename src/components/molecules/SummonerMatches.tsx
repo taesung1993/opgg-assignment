@@ -20,7 +20,8 @@ const styleOfTabItems = {
     width: 'auto',
     fontSize: '0.75rem',
     color: '#555',
-    marginRight: '1.5rem'
+    marginRight: '1.5rem',
+    fontFamily: '"NanumBarunGothic", sans-serif'
   },
   buttonActive: {
     backgroundColor: '#f2f2f2',
@@ -99,8 +100,8 @@ export default function SummonerMatches() {
         />
         <Molecules.SummonerSummaryInMatches
           positions={data.positions}
-          summary={data.summary}
           champions={data.champions}
+          games={filteredGames}
         />
       </section>
       <section className='mt-4'>

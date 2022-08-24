@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import Templates from '../templates';
 import Organisms from '../organisms';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -104,8 +105,13 @@ export default function Home() {
   ]);
 
   return (
-    <Templates.Nested>
-      <Organisms.Main />
-    </Templates.Nested>
+    <>
+      <Helmet>
+        <title>{summonerName}</title>
+      </Helmet>
+      <Templates.Nested>
+        <Organisms.Main />
+      </Templates.Nested>
+    </>
   );
 }
