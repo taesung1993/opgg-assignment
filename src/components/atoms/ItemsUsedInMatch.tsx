@@ -86,7 +86,7 @@ export default function ItemUsedInMatch({ items, isWin, controlWards }: Props) {
         <span className='mr-1'>
           {isWin ? <Icons.WinWard /> : <Icons.LoseWard />}
         </span>
-        <span className='text-[0.6875rem] -tracking-[0.42px] text-[#000]'>
+        <span className='text-[0.6875rem] -tracking-[0.42px] text-[#000] font-apple'>
           제어 와드 {controlWards}
         </span>
       </div>
