@@ -72,13 +72,11 @@ describe('<SummonerSummaryInMatches/>', () => {
     ).toHaveTextContent(kda);
 
     const average = getAverage(kills, deaths, assists);
-    const color = convertHexToRGBA(getColorInAverage(+average));
-    expect(
-      within(summarySection).getByRole('average-in-summary-in-matches')
-    ).toBeInTheDocument();
-    expect(
-      within(summarySection).getByRole('average-in-summary-in-matches')
-    ).toHaveTextContent(`${average}:1`);
+    const averageEl = within(summarySection).getByRole(
+      'average-in-summary-in-matches'
+    );
+    expect(averageEl).toBeInTheDocument();
+    expect(averageEl).toHaveTextContent(`${average}:1`);
   });
 
   it('챔피언 정보가 잘 시각화되어 있는지 확인합니다.', () => {
